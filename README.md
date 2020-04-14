@@ -1,6 +1,6 @@
-# Where's the food
+# COVID-19 React Project
 
-Customer web application to scan QR from restaurant and order through this application.
+Realtime COVID-19 Analytics!
 
 ## Setup
 
