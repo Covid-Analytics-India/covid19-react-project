@@ -11,7 +11,7 @@ function HomePage() {
       ------------------------------
       <br />
       <br />
-      <LineChartCard item={item} />
+      <LineChartCard />
     </div>
   );
 }
