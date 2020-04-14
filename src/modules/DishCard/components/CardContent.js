@@ -1,13 +1,33 @@
 import React, {useState} from 'react';
 
-import {useStyles} from '../styles';
+import {
+  useStyles,
+  useCarouselStyles,
+  useInlineStyles,
+  useInlineNoMediaStyles,
+} from '../styles';
 import {StarIcon} from '../../../assets/icons';
 import QuantityRocker from '../../QuantityRocker';
 
 function CardContent(props) {
-  const classes = useStyles();
-  const {name, raters, rating, price, qty, currency} = props;
+  const {name, raters, rating, price, qty, currency, variant, noMedia} = props;
 
+  const defaultClasses = useStyles();
+  const carouselClasses = useCarouselStyles();
+  const inlineClasses = useInlineStyles();
+  const inlineNoMediaClasses = useInlineNoMediaStyles();
+
+  const selectClasses = (variant) => {
+    switch (variant) {
+      case 'carousel':
+        return carouselClasses;
+      case 'inline':
+        return noMedia ? inlineNoMediaClasses : inlineClasses;
+      default:
+        return defaultClasses;
+    }
+  };
+  const classes = selectClasses(variant);
   // Just for Demo State
   const [localQty, setQty] = useState(qty);
 
@@ -19,13 +39,8 @@ function CardContent(props) {
       <div>
         <div className={classes.title}>{name}</div>
         <div className={classes.ratings}>
-          <StarIcon width="17" height="17" />{' '}
-          <span style={{color: 'rgba(33, 33, 33, 0.75)'}}>
-            {rating}&nbsp;|&nbsp;
-          </span>
-          <span style={{color: 'rgba(33, 33, 33, 0.75)'}}>
-            {raters}&nbsp;ratings
-          </span>
+          <StarIcon width="17" height="17" /> <span>{rating}&nbsp;|&nbsp;</span>
+          <span>{raters}&nbsp;ratings</span>
         </div>
       </div>
       <div className={classes.spaceBetween}>

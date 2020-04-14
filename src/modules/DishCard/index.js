@@ -5,19 +5,29 @@ import CardMedia from './components/CardMedia';
 import CardContent from './components/CardContent';
 
 function DishCard(props) {
-  const {item} = props;
+  const {item, variant, noMedia} = props;
+  const {name, image, _veg, raters, rating, price, qty, currency} = item;
   return (
     <>
-      <Card>
-        <CardMedia src={item.image} veg={item._veg} vegOutlined />
-        <CardContent
-          name={item.name}
-          rating={item.rating}
-          raters={item.raters}
-          price={item.price}
-          qty={item.qty}
-          currency={item.currency}
-        />
+      <Card variant={variant} noMedia={noMedia}>
+        <CardMedia
+          src={image}
+          veg={_veg}
+          vegOutlined
+          variant={variant}
+          noMedia={noMedia}
+        >
+          <CardContent
+            name={name}
+            rating={rating}
+            raters={raters}
+            price={price}
+            qty={qty}
+            currency={currency}
+            variant={variant}
+            noMedia={noMedia}
+          />
+        </CardMedia>
       </Card>
     </>
   );

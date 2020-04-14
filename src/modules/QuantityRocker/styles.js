@@ -2,16 +2,20 @@ import {makeStyles} from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
   quantityRocker: {
-    padding: '0px 4px',
-    display: 'inline-flex',
-    justifyContent: 'start',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 4,
     flexShrink: 0,
-    float: 'right',
-    alignItems: 'center',
-    border: '1px solid lightgrey',
+    border: '1px solid',
+    borderColor: theme.palette.text.secondary,
+    boxShadow: theme.palette.shadows.card,
     maxHeight: 25,
+    width: 84,
+    minWidth: 84,
+    maxWidth: `84px !important`,
     zIndex: 2,
+    background: theme.palette.background.default,
   },
   qty: {
     padding: '4px 10px',
@@ -30,8 +34,14 @@ export const useStyles = makeStyles((theme) => ({
   },
   addButton: {
     padding: '0px 16px',
-    border: '1px solid lightgrey',
+    border: '1px solid',
+    borderColor: theme.palette.text.secondary,
     borderRadius: 4,
+    boxShadow: theme.palette.shadows.card,
+    background: theme.palette.background.default,
+    width: 86,
+    maxWidth: 86,
+    minWidth: 86,
     height: 25,
   },
   addText: {
