@@ -1,4 +1,5 @@
 import React, {lazy} from 'react';
+import {useSelector} from 'react-redux';
 import {Switch, Route} from 'react-router';
 import suspenseHoc from './hoc/suspenseHoc';
 import headerHoc from './hoc/headerHoc';
@@ -26,6 +27,13 @@ function App() {
         textBlue: '#0156FF',
         textBlueDisabled: '#78A5FF',
       },
+      border: {
+        default: 'rgba(255, 255, 255, 0.57)',
+      },
+      shadows: {
+        paper: '0px 1px 2px rgba(0, 0, 0, 0.09)',
+        header: '0px 1px 2px rgba(0, 0, 0, 0.09)',
+      },
     },
     spacing: 2,
     typography: {
@@ -49,6 +57,13 @@ function App() {
         textBlue: '#0156FF',
         textBlueDisabled: '#78A5FF',
       },
+      border: {
+        default: 'rgba(255, 255, 255, 0.17)',
+      },
+      shadows: {
+        paper: '0px 1px 2px rgba(0, 0, 0, 0.79)',
+        header: '0px 1px 2px rgba(0, 0, 0, 0.79)',
+      },
     },
     spacing: 2,
     typography: {
@@ -56,11 +71,10 @@ function App() {
     },
   });
 
-  const theme = 'dark';
-  console.log(lightTheme);
+  const isDarkTheme = useSelector((state) => state.theme.isDarkTheme);
 
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <div className="pageStyle">
         <Switch>
           <Route

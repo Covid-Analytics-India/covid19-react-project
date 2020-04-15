@@ -1,8 +1,9 @@
 export const styles = (theme) => ({
-  header: {
+  root: {
     width: '100%',
-    backgroundColor: theme.palette.primary.main,
-    boxShadow: theme.shadows[0],
+    background: theme.palette.primary.main,
+    boxShadow: theme.palette.shadows.header,
+    color: theme.palette.text.primary,
   },
   logo: {
     flexGrow: 1,

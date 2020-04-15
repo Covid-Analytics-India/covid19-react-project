@@ -1,5 +1,4 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -10,6 +9,9 @@ import Grid from '@material-ui/core/Grid';
 import AntSwitch from '../../modules/AntSwitch';
 
 import {styles} from './styles';
+import {toggleTheme} from '../../services/actions';
+import {connect} from 'react-redux';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 const headerHoc = (WrapComponent) => {
   class HocContent extends React.Component {
@@ -29,7 +31,7 @@ const headerHoc = (WrapComponent) => {
       const {classes} = this.props;
       return (
         <>
-          <AppBar position="fixed" className={classes.header}>
+          <AppBar position="fixed" className={classes.root}>
             <Toolbar>
               <Typography variant="h6" className={classes.logo}>
                 LOGO
@@ -57,7 +59,11 @@ const headerHoc = (WrapComponent) => {
                   </Grid>
                 </Grid>
               </Grid>
-              <IconButton className={classes.theme} edge="end">
+              <IconButton
+                className={classes.theme}
+                edge="end"
+                onClick={this.props.toggleTheme}
+              >
                 <NightsStay />
               </IconButton>
               <IconButton className={classes.phone} edge="end">
@@ -75,7 +81,19 @@ const headerHoc = (WrapComponent) => {
       );
     }
   }
-  return withStyles(styles)(HocContent);
+
+  const mapStateToProps = (state) => {};
+
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      toggleTheme: () => dispatch(toggleTheme()),
+    };
+  };
+
+  return connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(withStyles(styles)(HocContent));
 };
 
 export default headerHoc;
