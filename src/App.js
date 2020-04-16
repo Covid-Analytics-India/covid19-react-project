@@ -6,6 +6,7 @@ import headerHoc from './hoc/headerHoc';
 import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
 import './App.scss';
 
+const NewsPage = lazy(() => import('./pages/NewsPage'));
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
 
@@ -13,23 +14,24 @@ function App() {
   const lightTheme = createMuiTheme({
     palette: {
       type: 'light',
-      primary: {main: '#212A39'},
-      secondary: {main: 'rgba(33, 42, 57, 0.36)'},
+      primary: {main: '#FFFFFF'},
+      secondary: {main: '#17E820', buttonTheme: '#FFE600'},
       background: {
-        default: '#FFFFFF',
-        card: '#FFFFFF',
-        header: '#FFFFFF',
+        default: '#F4F7FD',
+        paper: '#FFFFFF',
       },
       text: {
-        primary: 'rgba(33, 42, 57, 0.87)',
-        secondary: 'rgba(33, 42, 57, 0.36)',
-        themeRed: '#f53b57',
+        disabled: 'rgba(0, 0, 0, 0.54)',
+        hint: 'rgba(0, 0, 0, 0.54)',
+        secondary: 'rgba(0, 0, 0, 0.75)',
+        textBlue: '#0156FF',
+        textBlueDisabled: '#78A5FF',
       },
       border: {
         default: 'rgba(255, 255, 255, 0.57)',
       },
       shadows: {
-        card: '0px 1px 2px rgba(0, 0, 0, 0.09)',
+        paper: '0px 1px 2px rgba(0, 0, 0, 0.09)',
         header: '0px 1px 2px rgba(0, 0, 0, 0.09)',
       },
     },
@@ -42,23 +44,24 @@ function App() {
   const darkTheme = createMuiTheme({
     palette: {
       type: 'dark',
-      primary: {main: 'rgba(255,255,255, 0.87)'},
-      secondary: {main: 'rgba(255,255,255, 0.36)'},
+      primary: {main: '#323232'},
+      secondary: {main: '#17E820', buttonTheme: '#0156FF'},
       background: {
         default: '#121212',
-        card: '#212121',
-        header: '#212121',
+        paper: '#2C2C2C',
       },
       text: {
-        primary: 'rgba(255, 255, 255, 0.87)',
-        secondary: 'rgba(255, 255, 255, 0.36)',
-        themeRed: '#f53b57',
+        disabled: 'rgba(255, 255, 255, 0.54)',
+        hint: 'rgba(255, 255, 255, 0.54)',
+        secondary: 'rgba(255, 255, 255, 0.75)',
+        textBlue: '#0156FF',
+        textBlueDisabled: '#78A5FF',
       },
       border: {
         default: 'rgba(255, 255, 255, 0.17)',
       },
       shadows: {
-        card: '0px 1px 2px rgba(0, 0, 0, 0.79)',
+        paper: '0px 1px 2px rgba(0, 0, 0, 0.79)',
         header: '0px 1px 2px rgba(0, 0, 0, 0.79)',
       },
     },
@@ -74,7 +77,16 @@ function App() {
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <div className="pageStyle">
         <Switch>
-          <Route exact path="/" component={suspenseHoc(LandingPage)} />
+          <Route
+            exact
+            path="/"
+            component={suspenseHoc(headerHoc(LandingPage))}
+          />
+          <Route
+            exact
+            path="/news"
+            component={suspenseHoc(headerHoc(NewsPage))}
+          />
           <Route
             exact
             path="/home"

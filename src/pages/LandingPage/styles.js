@@ -8,7 +8,7 @@ export const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary,
     position: 'relative',
   },
-  /** TopLayer */
+  /* TopLayer */
   contactUS: {
     position: 'absolute',
     left: theme.spacing(5),
@@ -22,7 +22,7 @@ export const useStyles = makeStyles((theme) => ({
   buttonIcon: {
     padding: theme.spacing(0),
   },
-  /** MainLayer */
+  /* MainLayer */
   midContainer: {
     paddingLeft: theme.spacing(5),
     paddingRight: theme.spacing(5),
@@ -38,7 +38,7 @@ export const useStyles = makeStyles((theme) => ({
     margin: '0 auto',
     filter: 'drop-shadow(0 0 0.75rem grey)',
   },
-  /** BottomLayer */
+  /* BottomLayer */
   bottomContainer: {
     position: 'fixed',
     bottom: 0,
