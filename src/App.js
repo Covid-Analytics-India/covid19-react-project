@@ -1,16 +1,10 @@
-import React, {lazy} from 'react';
+import React from 'react';
 import {useSelector} from 'react-redux';
-import {Switch, Route} from 'react-router';
-import suspenseHoc from './hoc/suspenseHoc';
-import headerHoc from './hoc/headerHoc';
 import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
 import './App.scss';
+import Router from './Router';
 
-const NewsPage = lazy(() => import('./pages/NewsPage'));
-const LandingPage = lazy(() => import('./pages/LandingPage'));
-const HomePage = lazy(() => import('./pages/HomePage'));
-
-function App() {
+function App(props) {
   const lightTheme = createMuiTheme({
     palette: {
       type: 'light',
@@ -33,6 +27,9 @@ function App() {
       shadows: {
         paper: '0px 1px 2px rgba(0, 0, 0, 0.09)',
         header: '0px 1px 2px rgba(0, 0, 0, 0.09)',
+      },
+      graphLines: {
+        default: 'rgba(127, 127, 127, 0.27)',
       },
     },
     spacing: 2,
@@ -64,6 +61,9 @@ function App() {
         paper: '0px 1px 2px rgba(0, 0, 0, 0.79)',
         header: '0px 1px 2px rgba(0, 0, 0, 0.79)',
       },
+      graphLines: {
+        default: 'rgba(255, 255, 255, 0.07)',
+      },
     },
     spacing: 2,
     typography: {
@@ -75,25 +75,7 @@ function App() {
 
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-      <div className="pageStyle">
-        <Switch>
-          <Route
-            exact
-            path="/"
-            component={suspenseHoc(headerHoc(LandingPage))}
-          />
-          <Route
-            exact
-            path="/news"
-            component={suspenseHoc(headerHoc(NewsPage))}
-          />
-          <Route
-            exact
-            path="/home"
-            component={suspenseHoc(headerHoc(HomePage))}
-          />
-        </Switch>
-      </div>
+      <Router />
     </ThemeProvider>
   );
 }
