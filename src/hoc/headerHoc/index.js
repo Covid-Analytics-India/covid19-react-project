@@ -1,17 +1,17 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Phone from '@material-ui/icons/Phone';
 import NightsStay from '@material-ui/icons/NightsStay';
 import Grid from '@material-ui/core/Grid';
-import AntSwitch from '../../modules/AntSwitch';
+import {connect} from 'react-redux';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 import {styles} from './styles';
 import {toggleTheme} from '../../services/actions';
-import {connect} from 'react-redux';
-import withStyles from '@material-ui/core/styles/withStyles';
+import AntSwitch from '../../modules/AntSwitch';
+import logo from '../../assets/logo.svg';
 
 const headerHoc = (WrapComponent) => {
   class HocContent extends React.Component {
@@ -33,9 +33,8 @@ const headerHoc = (WrapComponent) => {
         <>
           <AppBar position="fixed" className={classes.root}>
             <Toolbar>
-              <Typography variant="h6" className={classes.logo}>
-                LOGO
-              </Typography>
+              <img src={logo} alt="logo" className={classes.logo} />
+
               {/* Language Toggle */}
               <Grid className={classes.langToggle} component="div">
                 <Grid

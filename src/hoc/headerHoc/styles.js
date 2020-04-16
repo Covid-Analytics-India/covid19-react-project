@@ -6,8 +6,8 @@ export const styles = (theme) => ({
     color: theme.palette.text.primary,
   },
   logo: {
-    flexGrow: 1,
     marginRight: theme.spacing(2),
+    width: 50,
   },
   langToggle: {
     flexGrow: 1,
