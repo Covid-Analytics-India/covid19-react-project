@@ -13,9 +13,24 @@ const graphReducer = (state = graphState, action) => {
     case actions.GET_GRAPH_DATA_CONFIRMED_SUCCESS:
       return Object.assign({}, state, {
         graphDataPending: false,
-        graphData: action.payload,
+        graphData: {
+          ...state.graphData,
+          day_wise_confirmed: action.payload,
+        },
       });
     case actions.GET_GRAPH_DATA_CONFIRMED_FAILED:
+      return Object.assign({}, state, {
+        graphDataPending: false,
+        graphDataError: action.payload,
+      });
+    case actions.GET_GRAPH_DATA_ALL_PENDING:
+      return Object.assign({}, state, {graphDataPending: true});
+    case actions.GET_GRAPH_DATA_ALL_SUCCESS:
+      return Object.assign({}, state, {
+        graphDataPending: false,
+        graphData: action.payload,
+      });
+    case actions.GET_GRAPH_DATA_ALL_FAILED:
       return Object.assign({}, state, {
         graphDataPending: false,
         graphDataError: action.payload,
