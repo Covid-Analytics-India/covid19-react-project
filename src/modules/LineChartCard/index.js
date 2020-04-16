@@ -1,46 +1,37 @@
 import React, {useState} from 'react';
 import Plot from 'react-plotly.js';
 import {useEffect} from 'react';
-import {getGraphDataConfirmed} from '../../services/actions/thunks';
-import {useDispatch} from 'react-redux';
-
-// import Card from './components/Card';
-// import CardMedia from './components/CardMedia';
-// import CardContent from './components/CardContent';
+import {useTheme} from '@material-ui/core/styles';
 
 function LineChartCard(props) {
-  const dispatch = useDispatch();
-  const [x, setX] = useState([]);
-  const [y, setY] = useState([]);
+  const {data, logScale} = props;
+  const [x, setX] = useState([...props.data.x]);
+  const [y, setY] = useState([...props.data.y]);
+  const theme = useTheme();
   useEffect(() => {
-    dispatch(getGraphDataConfirmed).then((res) => {
-      console.log(res);
-      const dates = res.x
-        // .filter((timestamp) => new Date(timestamp * 1000).getDate() % 2 === 0)
-        .map((timestamp) => {
-          const months = [
-            'Jan',
-            'Feb',
-            'Mar',
-            'Apr',
-            'May',
-            'Jun',
-            'Jul',
-            'Aug',
-            'Sep',
-            'Oct',
-            'Nov',
-            'Dec',
-          ];
-          const date = new Date(timestamp * 1000);
-          console.log('DATE: ', date);
-          return date.getDate() + ' ' + months[date.getMonth()];
-        });
-      console.log(dates);
-      setX(dates);
-      setY(res.y);
+    const dates = data.x.map((timestamp) => {
+      const months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ];
+      const date = new Date(timestamp * 1000);
+      console.log('DATE: ', date);
+      return date.getDate() + ' ' + months[date.getMonth()];
     });
-  }, [dispatch]);
+    console.log(dates);
+    setX(dates);
+    setY(data.y);
+  }, [data.x, data.y]);
   return (
     x.length > 0 && (
       <Plot
@@ -48,16 +39,39 @@ function LineChartCard(props) {
           {
             x: [...x],
             y: [...y],
-            mode: 'lines+markers',
-            marker: {color: 'red'},
+            mode: 'lines',
+            line: {
+              color: 'red',
+            },
           },
         ]}
         layout={{
+          yaxis: {
+            type: logScale ? 'log' : 'linear',
+            automargin: true,
+            gridcolor: theme.palette.graphLines.default,
+            showline: true,
+          },
           xaxis: {
             nticks: 5,
+            gridcolor: theme.palette.graphLines.default,
           },
+          paper_bgcolor: 'rgba(0,0,0,0)',
+          plot_bgcolor: 'rgba(0,0,0,0)',
+          margin: {
+            l: 0,
+            r: 10,
+            b: 20,
+            t: 10,
+            pad: 0,
+          },
+          width: window.innerWidth - 20,
+          height: (window.innerWidth - 20) / 2,
         }}
-        config={{responsive: true}}
+        config={{
+          responsive: true,
+          displayModeBar: false,
+        }}
       />
     )
   );
