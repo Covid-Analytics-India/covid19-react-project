@@ -31,6 +31,7 @@ function BarGraph(props) {
             size: 6,
           },
           automargin: true,
+          autorange: 'reversed',
         },
         width: window.innerWidth - 20,
         height: 340,
