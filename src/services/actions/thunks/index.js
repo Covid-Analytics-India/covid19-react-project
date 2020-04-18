@@ -30,7 +30,6 @@ export const getGraphDataConfirmed = async (dispatch, getState) => {
   });
 };
 
-
 export const getAllGraphData = async (dispatch, getState) => {
   return new Promise(async (resolve, reject) => {
     dispatch({type: actions.SET_ERROR, payload: false});
