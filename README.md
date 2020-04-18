@@ -1,4 +1,4 @@
-# COVID-19 React Project
+# COVID-19 React Project [![version](https://img.shields.io/github/v/release/cryptonex7/covid19-react-project)]
 
 Realtime COVID-19 Analytics!
 
