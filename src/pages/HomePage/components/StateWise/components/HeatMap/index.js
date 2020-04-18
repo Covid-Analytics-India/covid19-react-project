@@ -102,7 +102,7 @@ const ChoroplethMap = (props) => {
     const paletteScale = d3
       .scaleLinear()
       .domain([minValue, maxValue])
-      .range(['#fff', '#222']);
+      .range(['#F0DFF1', '#67116E']);
 
     // fill dataset in appropriate format
     data.forEach(function (item) {
