@@ -49,7 +49,7 @@ $gray: #6c757d;
   border: 6px solid rgb(250, 74, 74);
   border-color: rgb(250, 74, 74) transparent rgb(250, 74, 74) transparent;
   border-radius: 50%;
-  content: " ";
+  content: ' ';
   display: block;
   height: 40px;
   margin: 8px;
@@ -70,12 +70,12 @@ $gray: #6c757d;
 body {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-	float: none !important; 
+  float: none !important;
   font-family: Inter;
   margin: 0;
-	margin: 0 auto !important; 
+  margin: 0 auto !important;
   max-height: 100vh;
-  max-width: 1024px; 
+  max-width: 100%;
   min-height: 100vh;
   padding: 0;
 }

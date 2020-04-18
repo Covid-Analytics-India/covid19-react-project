@@ -31,7 +31,7 @@ const headerHoc = (WrapComponent) => {
       const {classes} = this.props;
       return (
         <>
-          <AppBar position="fixed" className={classes.root}>
+          <AppBar position="sticky" className={classes.root}>
             <Toolbar>
               <img src={logo} alt="logo" className={classes.logo} />
 
@@ -69,10 +69,6 @@ const headerHoc = (WrapComponent) => {
                 <Phone />
               </IconButton>
             </Toolbar>
-            {/* <div className="logo">LOGO</div>
-            <div className="langToggle">toggle</div>
-            <div className="switchMode">switch mode</div>
-            <div className="helpline">Helpline</div> */}
           </AppBar>
 
           <WrapComponent />
