@@ -25,10 +25,8 @@ function LineChartCard(props) {
         'Dec',
       ];
       const date = new Date(timestamp * 1000);
-      console.log('DATE: ', date);
       return date.getDate() + ' ' + months[date.getMonth()];
     });
-    console.log(dates);
     setX(dates);
     setY(data.y);
   }, [data.x, data.y]);
