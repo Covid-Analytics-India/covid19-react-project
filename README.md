@@ -1,4 +1,4 @@
-# ![COVID-19 Analytics India](https://covidanalytics.live) ![version](https://img.shields.io/github/v/release/Cryptonex7/covid19-react-project)
+# [COVID-19 Analytics India](https://covidanalytics.live) &middot; ![version](https://img.shields.io/github/v/release/Cryptonex7/covid19-react-project)
 
 Realtime COVID-19 Analytics!
 
