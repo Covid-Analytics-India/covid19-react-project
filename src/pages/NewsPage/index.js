@@ -7,8 +7,7 @@ const NewsPage = () => {
   const classes = useStyles();
 
   useEffect(() => {
-    const query =
-      'corona%20OR%20covid%20OR%20covid%2019%20OR%20Covid-19%20OR%20Coronavirus';
+    const query = 'india+corona+covid+covid+19+Covid-19+Coronavirus';
     const apiKey = '9e58cfc12b0142d9a23653cd75db603e';
     const language = 'en';
 
