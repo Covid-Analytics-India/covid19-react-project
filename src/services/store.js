@@ -18,7 +18,10 @@ const history = createBrowserHistory();
 /** Store requirements - middleware */
 const routeMiddleware = routerMiddleware(history);
 const middlewares = [thunk, routeMiddleware];
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers =
+  process.env.NODE_ENV === 'production'
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : false || compose;
 const customPersistReducer = persistReducer(persistConfig, reducer(history));
 
 /** Configure Store */
