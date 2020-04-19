@@ -1,40 +1,43 @@
 import React, {useEffect, useState} from 'react';
+import NewsCard from './components/NewsCard';
+import {useStyles} from './styles';
 
 const NewsPage = () => {
   const [newsArticles, setNewsArticles] = useState(null);
+  const classes = useStyles();
 
   useEffect(() => {
-    console.log('did mount');
-    const query =
-      'corona%20OR%20covid%20OR%20covid%2019%20OR%20Covid-19%20OR%20Coronavirus';
+    const query = 'india+corona+covid+covid+19+Covid-19+Coronavirus';
     const apiKey = '9e58cfc12b0142d9a23653cd75db603e';
-    const language = 'hi';
+    const language = 'en';
 
     const fetchNewsData = async () => {
-      const response = await fetch(
-        `https://newsapi.org/v2/everything?language=${language}&q=${query}&sortBy=popularity&apiKey=${apiKey}`
-      );
-
-      const newsArticles = await response.json();
-
-      console.log(newsArticles);
-
-      setNewsArticles(newsArticles.articles);
+      try {
+        const response = await fetch(
+          `https://newsapi.org/v2/everything?language=${language}&q=${query}&sortBy=popularity&apiKey=${apiKey}`
+        );
+        const newsArticles = await response.json();
+        setNewsArticles(newsArticles.articles);
+      } catch (e) {
+        console.log(e);
+        setNewsArticles(null);
+      }
     };
 
     fetchNewsData();
   }, []);
 
   return (
-    <div className="news-container">
-      {newsArticles ? (
+    <div className={classes.root}>
+      {newsArticles !== null ? (
         newsArticles.map((newsArticle) => (
-          <div key={`${newsArticle.publishedAt}${newsArticle.author}`}>
-            {newsArticle.title}
-          </div>
+          <NewsCard
+            key={`${newsArticle.publishedAt}${newsArticle.author}`}
+            newsArticle={newsArticle}
+          />
         ))
       ) : (
-        <p>No Articles Found</p>
+        <p className={classes.noArticle}>No Articles Found</p>
       )}
     </div>
   );
