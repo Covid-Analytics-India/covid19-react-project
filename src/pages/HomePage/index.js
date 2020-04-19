@@ -18,44 +18,46 @@ function HomePage() {
     dispatch(getAllGraphData);
   }, [dispatch]);
   return (
-    <div style={{padding: 10, paddingTop: 80}} className={classes.root}>
-      {/* CUMMULATIVE / Logarithmic */}
-      <Cummulative
-        data={graphData.country_wise.day_wise_confirmed}
-        logChecked={logChecked}
-      />
-      <BinarySwitch
-        leftVal="Linear"
-        rightVal="Logarithmic"
-        handleChange={setLogChecked}
-        rightChecked={logChecked}
-      />
+    Object.keys(graphData).length > 0 && (
+      <div style={{padding: 10, paddingTop: 80}} className={classes.root}>
+        {/* CUMMULATIVE / Logarithmic */}
+        <Cummulative
+          data={graphData.country_wise.day_wise_confirmed}
+          logChecked={logChecked}
+        />
+        <BinarySwitch
+          leftVal="Linear"
+          rightVal="Logarithmic"
+          handleChange={setLogChecked}
+          rightChecked={logChecked}
+        />
 
-      {/* HEATMAP / Bar */}
-      <StateWise
-        data={graphData.state_wise.state_wise_confirmed[0]}
-        barChecked={barChecked}
-      />
-      <BinarySwitch
-        leftVal="Heat Map"
-        rightVal="Bar Graph"
-        handleChange={setBarChecked}
-        rightChecked={barChecked}
-      />
-      <Cummulative
-        data={graphData.country_wise.day_wise_encountered}
-        logChecked={logChecked}
-      />
-      <BinarySwitch
-        leftVal="Linear"
-        rightVal="Logarithmic"
-        handleChange={setLogChecked}
-        rightChecked={logChecked}
-      />
+        {/* HEATMAP / Bar */}
+        <StateWise
+          data={graphData.state_wise.state_wise_confirmed[0]}
+          barChecked={barChecked}
+        />
+        <BinarySwitch
+          leftVal="Heat Map"
+          rightVal="Bar Graph"
+          handleChange={setBarChecked}
+          rightChecked={barChecked}
+        />
+        <Cummulative
+          data={graphData.country_wise.day_wise_encountered}
+          logChecked={logChecked}
+        />
+        <BinarySwitch
+          leftVal="Linear"
+          rightVal="Logarithmic"
+          handleChange={setLogChecked}
+          rightChecked={logChecked}
+        />
 
-      {/* Travel History */}
-      <TravelHistory data={graphData.travel_history_analysis[0]} />
-    </div>
+        {/* Travel History */}
+        <TravelHistory data={graphData.travel_history_analysis[0]} />
+      </div>
+    )
   );
 }
 
