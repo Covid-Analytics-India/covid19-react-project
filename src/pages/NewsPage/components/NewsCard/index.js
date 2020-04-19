@@ -9,10 +9,8 @@ function NewsCard(props) {
   const {urlToImage, ...cardContent} = newsArticle;
   return (
     <NewsCardContainer>
-      <>
-        <NewsCardMedia src={urlToImage} />
-        <NewsCardContent {...cardContent} />
-      </>
+      <NewsCardMedia src={urlToImage} />
+      <NewsCardContent {...cardContent} />
     </NewsCardContainer>
   );
 }

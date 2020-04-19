@@ -3,44 +3,68 @@ import {makeStyles} from '@material-ui/core/styles';
 export const useStyles = makeStyles((theme) => ({
   card: {
     width: '100%',
-    height: 203,
     background: theme.palette.background.paper,
     boxShadow: theme.palette.shadows.paper,
-    borderRadius: 5,
+    borderRadius: 8,
     overflow: 'hidden',
+    margin: '8px 4px',
+    padding: '4px 8px 12px 8px',
+    // Above tablet size
+    [theme.breakpoints.up('sm')]: {
+      width: 380,
+      height: 220,
+      padding: '4px 8px 8px 8px',
+    },
   },
   // CARD MEDIA
   cardMedia: {
-    width: 65,
-    height: 72,
-    backgroundSize: 'auto 72px',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    maxWidth: 120,
+    float: 'left',
+    marginTop: 47,
+    shapeOutside: 'border-box',
+    padding: '4px 10px 2px 10px',
   },
   // CARD CONTENT
   cardContent: {
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
     padding: 8,
-    height: 75,
-  },
-  spaceBetween: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    fontSize: 14,
     color: theme.palette.text.primary,
   },
   title: {
-    fontWeight: 500,
+    fontWeight: 600,
     fontSize: 14,
-    color: theme.palette.text.primary,
-    marginBottom: 7,
+    color: theme.palette.text.textBlue,
+    marginBottom: 12,
+  },
+  description: {
+    fontSize: 12,
+    textAlign: 'justify',
+    marginBottom: 12,
+  },
+  newsInfo: {
+    fontStyle: 'italic',
+    fontSize: 10,
+    marginBottom: 4,
+  },
+  source: {
+    fontSize: 11,
+    fontWeight: 900,
+  },
+  date: {
+    fontSize: 10,
+    marginBottom: 8,
+  },
+  dot: {
+    display: 'inline-block',
+    width: 4,
+    height: 4,
+    borderRadius: '50%',
+    backgroundColor: theme.palette.text.textBlue,
+    margin: '0 8px',
+  },
+  readMore: {
+    fontWeight: 900,
+    fontSize: 13,
+    float: 'right',
   },
 }));

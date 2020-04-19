@@ -7,11 +7,6 @@ function CardMedia(props) {
 
   const classes = useStyles();
 
-  return (
-    <div
-      style={{backgroundImage: `url(${src})`}}
-      className={classes.cardMedia}
-    />
-  );
+  return <img className={classes.cardMedia} src={src} alt="news_image" />;
 }
 export default CardMedia;
