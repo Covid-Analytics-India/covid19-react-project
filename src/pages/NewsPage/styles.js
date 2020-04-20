@@ -15,7 +15,7 @@ export const useStyles = makeStyles((theme) => ({
       flexWrap: 'wrap',
     },
   },
-  noArticle: {
+  loadingNews: {
     color: theme.palette.text.primary,
   },
 }));

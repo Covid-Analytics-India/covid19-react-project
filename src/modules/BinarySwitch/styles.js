@@ -3,15 +3,16 @@ import {makeStyles} from '@material-ui/core/styles';
 export const useStyles = makeStyles((theme) => ({
   logSwitch: {
     width: 180,
-    marginRight: 10,
+    margin: '0 10px',
     fontSize: 14,
-    alignSelf: 'flex-end',
+    // alignSelf: 'flex-end',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
   },
   enabled: {
-    color: theme.palette.secondary.main,
+    color: theme.palette.text.textBlue,
+    fontWeight: 500,
   },
 }));

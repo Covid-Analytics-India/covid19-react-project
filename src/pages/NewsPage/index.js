@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from 'react';
+import {connect} from 'react-redux';
 import NewsCard from './components/NewsCard';
 import {useStyles} from './styles';
 
-const NewsPage = () => {
+const NewsPage = ({isHindi}) => {
   const [newsArticles, setNewsArticles] = useState(null);
   const classes = useStyles();
 
   useEffect(() => {
     const query = 'india+corona+covid+covid+19+Covid-19+Coronavirus';
     const apiKey = '9e58cfc12b0142d9a23653cd75db603e';
-    const language = 'en';
+    const language = isHindi ? 'hi' : 'en';
 
     const fetchNewsData = async () => {
       try {
@@ -17,6 +18,7 @@ const NewsPage = () => {
           `https://newsapi.org/v2/everything?language=${language}&q=${query}&sortBy=popularity&apiKey=${apiKey}`
         );
         const newsArticles = await response.json();
+        console.log(newsArticles);
         setNewsArticles(newsArticles.articles);
       } catch (e) {
         console.log(e);
@@ -25,7 +27,7 @@ const NewsPage = () => {
     };
 
     fetchNewsData();
-  }, []);
+  }, [isHindi]);
 
   return (
     <div className={classes.root}>
@@ -37,10 +39,14 @@ const NewsPage = () => {
           />
         ))
       ) : (
-        <p className={classes.noArticle}>No Articles Found</p>
+        <p className={classes.loadingNews}>Loading News for you...</p>
       )}
     </div>
   );
 };
 
-export default NewsPage;
+const mapStateToProps = (state) => ({
+  isHindi: state.lang.isHindi,
+});
+
+export default connect(mapStateToProps)(NewsPage);
