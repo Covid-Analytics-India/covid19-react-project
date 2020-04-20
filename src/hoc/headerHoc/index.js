@@ -4,66 +4,63 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Phone from '@material-ui/icons/Phone';
 import NightsStay from '@material-ui/icons/NightsStay';
-import Grid from '@material-ui/core/Grid';
+import WbSunny from '@material-ui/icons/WbSunny';
 import {connect} from 'react-redux';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 import {styles} from './styles';
 import {toggleTheme} from '../../services/actions';
-import AntSwitch from '../../modules/AntSwitch';
+import {toggleLang} from '../../services/actions';
+import BinarySwitch from '../../modules/BinarySwitch';
 import logo from '../../assets/logo.svg';
+import {withRouter} from 'react-router-dom';
 
 const headerHoc = (WrapComponent) => {
   class HocContent extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {
-        checked: true,
-      };
     }
 
-    handleChange = (event) => {
-      this.setState({...this.state, checked: event.target.checked});
+    handleChange = (checked) => {
+      this.setState({...this.state, checked: checked});
       console.log(this.state.checked);
     };
 
     render() {
-      const {classes} = this.props;
+      const {
+        classes,
+        isHindi,
+        toggleLang,
+        isDarkTheme,
+        toggleTheme,
+        history,
+      } = this.props;
+
       return (
         <>
           <AppBar position="sticky" className={classes.root}>
+            <img
+              src={logo}
+              alt="logo"
+              className={classes.logo}
+              onClick={() => history.push('/')}
+            />
+            {/* Language Toggle */}
+            <BinarySwitch
+              className={classes.langToggle}
+              leftVal="English"
+              rightVal="Hindi"
+              handleChange={toggleLang}
+              rightChecked={isHindi}
+            />
             <Toolbar>
-              <img src={logo} alt="logo" className={classes.logo} />
-
-              {/* Language Toggle */}
-              <Grid className={classes.langToggle} component="div">
-                <Grid
-                  component="label"
-                  container
-                  alignItems="center"
-                  spacing={1}
-                >
-                  <Grid className={classes.langLable} item>
-                    English
-                  </Grid>
-                  <Grid item>
-                    <AntSwitch
-                      checked={this.state.checked}
-                      onChange={this.handleChange}
-                      name="langToggle"
-                    />
-                  </Grid>
-                  <Grid className={classes.langLable} item>
-                    Hindi
-                  </Grid>
-                </Grid>
-              </Grid>
+              {/* Theme Toggle */}
               <IconButton
                 className={classes.theme}
                 edge="end"
-                onClick={this.props.toggleTheme}
+                onClick={toggleTheme}
               >
-                <NightsStay />
+                {isDarkTheme ? <NightsStay /> : <WbSunny />}
               </IconButton>
               <IconButton className={classes.phone} edge="end">
                 <Phone />
@@ -77,18 +74,20 @@ const headerHoc = (WrapComponent) => {
     }
   }
 
-  const mapStateToProps = (state) => {};
+  const mapStateToProps = (state) => ({
+    isHindi: state.lang.isHindi,
+    isDarkTheme: state.theme.isDarkTheme,
+  });
 
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      toggleTheme: () => dispatch(toggleTheme()),
-    };
-  };
+  const mapDispatchToProps = (dispatch) => ({
+    toggleTheme: () => dispatch(toggleTheme()),
+    toggleLang: () => dispatch(toggleLang()),
+  });
 
   return connect(
     mapStateToProps,
     mapDispatchToProps
-  )(withStyles(styles)(HocContent));
+  )(withStyles(styles)(withRouter(HocContent)));
 };
 
 export default headerHoc;

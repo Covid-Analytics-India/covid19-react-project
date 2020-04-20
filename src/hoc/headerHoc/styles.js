@@ -4,16 +4,18 @@ export const styles = (theme) => ({
     background: theme.palette.primary.main,
     boxShadow: theme.palette.shadows.header,
     color: theme.palette.text.primary,
+    display: 'flex',
+    flexDirection: 'row',
+    alingItems: 'center',
+    justifyContent: 'space-between',
   },
   logo: {
     marginRight: theme.spacing(2),
     width: 50,
+    marginLeft: 8,
   },
   langToggle: {
     flexGrow: 1,
-  },
-  langLable: {
-    margin: `0 8px`,
   },
   theme: {
     color: theme.palette.secondary.buttonTheme,
