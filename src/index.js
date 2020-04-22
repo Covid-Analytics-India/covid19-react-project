@@ -11,6 +11,7 @@ import i18n from './utils/lang/i18n';
 
 ReactDOM.render(
   <Provider store={store}>
+    {console.log('$NODE_ENV: ', process.env.NODE_ENV)}
     <PersistGate loading={<div>Loading</div>} persistor={persistor}>
       <ConnectedRouter history={history}>
         <I18nextProvider i18n={i18n}>
