@@ -11,7 +11,7 @@ function App(props) {
       primary: {main: '#FFFFFF'},
       secondary: {main: '#17E820', buttonTheme: '#FFE600'},
       background: {
-        default: '#F4F7FD',
+        default: '#e4e7ee',
         paper: '#FFFFFF',
       },
       text: {
@@ -34,7 +34,7 @@ function App(props) {
     },
     spacing: 2,
     typography: {
-      fontFamily: ['Inter'].join(','),
+      fontFamily: ['Bitter'].join(','),
     },
   });
 
@@ -67,7 +67,7 @@ function App(props) {
     },
     spacing: 2,
     typography: {
-      fontFamily: ['Inter'].join(','),
+      fontFamily: ['Bitter'].join(','),
     },
   });
 
