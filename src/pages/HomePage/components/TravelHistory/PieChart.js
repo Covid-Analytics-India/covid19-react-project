@@ -21,6 +21,7 @@ function PieChart(props) {
           textinfo: 'label+percent',
           textposition: 'inside',
           automargin: true,
+          title: '',
         },
       ]}
       layout={{
@@ -34,7 +35,8 @@ function PieChart(props) {
           t: 10,
           pad: 0,
         },
-        width: window.innerWidth - 20,
+        width: Math.min(480, window.innerWidth - 20),
+        height: Math.min(480, window.innerWidth - 20),
         showlegend: false,
       }}
       config={{
