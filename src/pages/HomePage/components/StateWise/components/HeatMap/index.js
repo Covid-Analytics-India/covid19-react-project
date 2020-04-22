@@ -2,8 +2,12 @@ import React, {useEffect} from 'react';
 import Datamap from 'datamaps/dist/datamaps.world.min.js';
 import * as d3 from 'd3';
 import IndiaJson from './India.topo.json';
+import useTheme from '@material-ui/core/styles/useTheme';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const ChoroplethMap = (props) => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   const stateData = props.data;
   const stateCodes = stateData.y.map((state) => {
     switch (state) {
@@ -118,7 +122,7 @@ const ChoroplethMap = (props) => {
       geographyConfig: {
         popupOnHover: true,
         highlightOnHover: true,
-        borderColor: '#44444422',
+        borderColor: '#44444442',
         highlightBorderWidth: 1,
         borderWidth: 0.5,
         dataJson: IndiaJson,
@@ -146,8 +150,12 @@ const ChoroplethMap = (props) => {
         const projection = d3
           .geoMercator()
           .center([81.486328125, 22.983801417384697]) // always in [East Latitude, North Longitude]
-          .scale(570)
-          .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+          .scale(matches ? 570 : 870)
+          .translate(
+            matches
+              ? [element.offsetWidth / 2 - 10, element.offsetHeight / 2]
+              : [element.offsetWidth / 2 + 120, element.offsetHeight / 2 + 100]
+          );
 
         const path = d3.geoPath().projection(projection);
         return {path: path, projection: projection};
@@ -158,8 +166,8 @@ const ChoroplethMap = (props) => {
     <div
       id="cloropleth_map"
       style={{
-        height: 150,
-        width: '100%',
+        height: matches ? 300 : 177,
+        width: matches ? 600 : 330,
       }}
     ></div>
   );
