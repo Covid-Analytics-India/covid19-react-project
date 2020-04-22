@@ -63,8 +63,8 @@ function LineChartCard(props) {
             t: 10,
             pad: 0,
           },
-          width: window.innerWidth - 20,
-          height: (window.innerWidth - 20) / 2,
+          width: Math.min(580, window.innerWidth - 20),
+          height: Math.min(240, (window.innerWidth - 20) / 2),
         }}
         config={{
           responsive: true,
