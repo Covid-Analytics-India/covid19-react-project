@@ -34,7 +34,7 @@ function App(props) {
     },
     spacing: 2,
     typography: {
-      fontFamily: ['Inter'].join(','),
+      fontFamily: ['Bitter'].join(','),
     },
   });
 
@@ -67,7 +67,7 @@ function App(props) {
     },
     spacing: 2,
     typography: {
-      fontFamily: ['Inter'].join(','),
+      fontFamily: ['Bitter'].join(','),
     },
   });
 
