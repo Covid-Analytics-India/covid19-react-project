@@ -22,7 +22,7 @@ function MainLayer() {
         color="primary"
         onClick={() => dispatch(push('/home'))}
       >
-        {t('Wello Horld')}
+        {t('Wello_Horld')}
       </Button>
     </div>
   );

@@ -14,15 +14,15 @@ i18n.use(LanguageDetector).init({
         add: '+  ADD',
       },
     },
-    ja: {
+    hi: {
       translations: {
         // landing page
-        menu: 'アカウント',
-        contact_us: 'お問い合わせ',
-        Wello_Horld: 'QRコードをスキャン',
-        our_partners: '私たちのパートナー',
+        menu: 'मेन्यू',
+        contact_us: 'संपर्क करें',
+        Wello_Horld: 'नमस्ते दुनिया',
+        our_partners: 'हमारे सहयोगी',
         // Home Page
-        add: '+  追加する',
+        add: '+  जोड़ना',
       },
     },
   },

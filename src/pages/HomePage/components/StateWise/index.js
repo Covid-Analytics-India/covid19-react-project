@@ -1,9 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import HeatMap from './components/HeatMap';
 import BarGraph from './components/BarGraph';
-
+import {useStyles} from './styles';
+import BinarySwitch from '../../../../modules/BinarySwitch';
 function StateWise(props) {
-  const {barChecked, data} = props;
-  return barChecked ? <BarGraph data={data} /> : <HeatMap data={data} />;
+  const {title, data} = props;
+  const classes = useStyles();
+  const [barChecked, setBarChecked] = useState(false);
+  return (
+    <div className={classes.StateWise}>
+      <div className={classes.Title}>{title}</div>
+      <div className={classes.Content}>
+        {barChecked ? <BarGraph data={data} /> : <HeatMap data={data} />}
+      </div>
+      <BinarySwitch
+        leftVal="Heat Map"
+        rightVal="Bar Graph"
+        handleChange={setBarChecked}
+        rightChecked={barChecked}
+      />
+    </div>
+  );
 }
 export default StateWise;
