@@ -6,7 +6,6 @@ function PieChart(props) {
   const newLabels = data.labels[0].map((label) =>
     label === 'Travelled from Delhi' ? label : label.slice(15)
   );
-  console.log(newLabels);
   return (
     <Plot
       data={[

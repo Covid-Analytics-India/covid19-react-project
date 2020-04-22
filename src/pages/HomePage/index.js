@@ -21,7 +21,6 @@ function HomePage() {
 
   useEffect(() => {
     dispatch(getAllGraphData);
-    console.log('useEffect GraphData: ', graphData);
   }, [dispatch]);
   return Object.keys(graphData).length > 0 ? (
     <div className={classes.flexCol}>
@@ -34,11 +33,7 @@ function HomePage() {
       />
       <div className={classes.root}>
         <div className={classes.compressor}>
-          {
-            /* Header Section  */
-
-            console.log('Header GraphData: ', graphData)
-          }
+          {/* Header Section  */}
           <LandingSection />
 
           {matches ? (
