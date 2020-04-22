@@ -21,6 +21,7 @@ function HomePage() {
 
   useEffect(() => {
     dispatch(getAllGraphData);
+    console.log('useEffect GraphData: ', graphData);
   }, [dispatch]);
   return Object.keys(graphData).length > 0 ? (
     <div className={classes.flexCol}>
@@ -33,7 +34,11 @@ function HomePage() {
       />
       <div className={classes.root}>
         <div className={classes.compressor}>
-          {/* Header Section */}
+          {
+            /* Header Section  */
+
+            console.log('Header GraphData: ', graphData)
+          }
           <LandingSection />
 
           {matches ? (
@@ -80,7 +85,7 @@ function HomePage() {
             <>
               {/* CUMMULATIVE / Logarithmic */}
               <Cummulative
-                data={graphData.country_wise.day_wise_encountered}
+                data={graphData.country_wise.day_wise_confirmed}
                 title="Day-Wise Data"
               />
 
