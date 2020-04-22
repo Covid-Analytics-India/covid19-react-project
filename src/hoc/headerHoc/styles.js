@@ -8,6 +8,7 @@ export const styles = (theme) => ({
     flexDirection: 'row',
     alingItems: 'center',
     justifyContent: 'space-between',
+    overflow: 'hidden',
   },
   logo: {
     marginRight: theme.spacing(2),
