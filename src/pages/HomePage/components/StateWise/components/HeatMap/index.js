@@ -90,6 +90,7 @@ const ChoroplethMap = (props) => {
     }
   });
   useEffect(() => {
+    const viewportWidth = window.innerWidth > 600;
     const dataset = {};
     const data = stateData.x.map((e, i) => [stateCodes[i], e]);
     // We need to colorize every country based on "numberOfWhatever"
@@ -150,9 +151,9 @@ const ChoroplethMap = (props) => {
         const projection = d3
           .geoMercator()
           .center([81.486328125, 22.983801417384697]) // always in [East Latitude, North Longitude]
-          .scale(matches ? 570 : 870)
+          .scale(window.innerWidth < 600 ? 570 : 870)
           .translate(
-            matches
+            window.innerWidth < 600
               ? [element.offsetWidth / 2 - 10, element.offsetHeight / 2]
               : [element.offsetWidth / 2 + 120, element.offsetHeight / 2 + 100]
           );
