@@ -1,7 +1,11 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useTheme from '@material-ui/core/styles/useTheme';
 
 function BarGraph(props) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   const {data} = props;
   return (
     <Plot
@@ -28,13 +32,13 @@ function BarGraph(props) {
         },
         yaxis: {
           tickfont: {
-            size: 6,
+            size: matches ? 12 : 6,
           },
           automargin: true,
           autorange: 'reversed',
         },
-        width: window.innerWidth - 20,
-        height: 340,
+        width: Math.min(600, window.innerWidth - 20),
+        height: matches ? 503 : 340,
       }}
       config={{
         responsive: true,
