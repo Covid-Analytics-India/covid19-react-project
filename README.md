@@ -5,9 +5,9 @@ ________________________________________________________________
 
 ## Deploy
 
-- Push to branch `dev`:    [dev-covidanalyticsindia.now.sh](dev-covidanalyticsindia.now.sh)
-- Push to branch `test`:   [test-covidanalyticsindia.now.sh](test-covidanalyticsindia.now.sh)
-- Push to branch `master`: [covidanalytics.live](covidanalytics.live)
+- Push to branch `dev`:    [dev-covidanalyticsindia.now.sh](https://dev-covidanalyticsindia.now.sh)
+- Push to branch `test`:   [test-covidanalyticsindia.now.sh](https://test-covidanalyticsindia.now.sh)
+- Push to branch `master`: [covidanalytics.live](https://covidanalytics.live)
 
 ## Setup
 
