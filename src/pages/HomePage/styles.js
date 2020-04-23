@@ -50,19 +50,23 @@ export const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column',
+    flexDirection: 'row',
+    marginBottom: 18,
+    width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginBottom: 18,
+      flexDirection: 'column',
     },
   },
   headerImage: {
-    height: 80,
+    height: 60,
+    marginRight: 10,
     [theme.breakpoints.up('sm')]: {
+      marginRight: 0,
       height: 180,
     },
   },
   headerText: {
-    fontSize: 20,
+    fontSize: 14,
     fontWeight: 700,
     color: theme.palette.text.primary,
     [theme.breakpoints.up('sm')]: {
