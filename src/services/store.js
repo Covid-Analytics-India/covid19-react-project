@@ -18,21 +18,16 @@ const history = createBrowserHistory();
 /** Store requirements - middleware */
 const routeMiddleware = routerMiddleware(history);
 const middlewares = [thunk, routeMiddleware];
+// const composeEnhancers =
+//   process.env.NODE_ENV === 'production'
+//     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+//     : false || compose;
 const customPersistReducer = persistReducer(persistConfig, reducer(history));
 
 /** Configure Store */
 const store = createStore(
   customPersistReducer,
-  compose(
-    applyMiddleware(...middlewares),
-    ...(process.env.NODE_ENV === 'production' ||
-    process.env.NODE_ENV === 'devProd'
-      ? [
-          window.__REDUX_DEVTOOLS_EXTENSION__ &&
-            window.__REDUX_DEVTOOLS_EXTENSION__({trace: true}),
-        ]
-      : [])
-  )
+  compose(applyMiddleware(...middlewares))
 );
 
 /** Configure Persistor */
