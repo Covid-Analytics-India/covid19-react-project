@@ -11,11 +11,13 @@ import {particleParams} from './config.js';
 import LandingSection from './components/LandingSection';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Divider from '@material-ui/core/Divider';
+import GraphGroup from './components/GraphGroup';
 
 function HomePage() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const graphData = useSelector((state) => state.thunk.graphData);
+
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
@@ -78,21 +80,23 @@ function HomePage() {
             </>
           ) : (
             <>
-              {/* CUMMULATIVE / Logarithmic */}
-              <Cummulative
-                data={graphData.country_wise.day_wise_confirmed}
-                title="Day-Wise Data"
+              <GraphGroup
+                title="Current Trends"
+                group={[
+                  {
+                    data: graphData.country_wise.day_wise_confirmed,
+                    title: 'Cummulative',
+                  },
+                  {
+                    data: graphData.country_wise.day_wise_encountered,
+                    title: 'Day-Wise',
+                  },
+                ]}
               />
 
               {/* HEATMAP / Bar */}
               <StateWise
                 data={graphData.state_wise.state_wise_confirmed[0]}
-                title="State-Wise Data"
-              />
-
-              {/* Day Wise */}
-              <Cummulative
-                data={graphData.country_wise.day_wise_encountered}
                 title="State-Wise Data"
               />
 
