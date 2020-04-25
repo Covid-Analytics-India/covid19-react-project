@@ -2,7 +2,6 @@ import React from 'react';
 import {useStyles} from './styles';
 import TopLayer from './components/TopLayer';
 import MainLayer from './components/MainLayer';
-import BottomLayer from './components/BottomLayer';
 
 function LandingPage() {
   const classes = useStyles();
@@ -10,7 +9,6 @@ function LandingPage() {
     <div className={classes.root}>
       <TopLayer />
       <MainLayer />
-      <BottomLayer />
     </div>
   );
 }

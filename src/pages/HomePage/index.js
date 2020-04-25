@@ -22,7 +22,10 @@ function HomePage() {
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
-    dispatch(getAllGraphData);
+    const fetchGraphData = async () => {
+      await dispatch(getAllGraphData);
+    };
+    fetchGraphData();
   }, [dispatch]);
   return Object.keys(graphData).length > 0 ? (
     <div className={classes.flexCol}>
