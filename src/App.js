@@ -69,6 +69,16 @@ function App(props) {
     typography: {
       fontFamily: ['Bitter'].join(','),
     },
+    overrides: {
+      MuiTabs: {
+        text: {
+          color: 'primary',
+        },
+        indicator: {
+          color: 'primary',
+        },
+      },
+    },
   });
 
   const isDarkTheme = useSelector((state) => state.theme.isDarkTheme);
