@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {connect} from 'react-redux';
 import NewsCard from './components/NewsCard';
 import {useStyles} from './styles';
+import {useTranslation} from 'react-i18next';
 
-const NewsPage = ({isHindi}) => {
+const NewsPage = () => {
   const [newsArticles, setNewsArticles] = useState(null);
   const classes = useStyles();
+  const [, i18n] = useTranslation();
 
   useEffect(() => {
     const query = 'india+corona+covid+covid+19+Covid-19+Coronavirus';
     const apiKey = '9e58cfc12b0142d9a23653cd75db603e';
-    const language = isHindi ? 'hi' : 'en';
+    const language = i18n.language;
 
     const fetchNewsData = async () => {
       try {
@@ -27,7 +28,7 @@ const NewsPage = ({isHindi}) => {
     };
 
     fetchNewsData();
-  }, [isHindi]);
+  }, [i18n.language]);
 
   return (
     <div className={classes.root}>
@@ -45,8 +46,4 @@ const NewsPage = ({isHindi}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  isHindi: state.lang.isHindi,
-});
-
-export default connect(mapStateToProps)(NewsPage);
+export default NewsPage;

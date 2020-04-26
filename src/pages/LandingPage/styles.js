@@ -38,14 +38,4 @@ export const useStyles = makeStyles((theme) => ({
     margin: '0 auto',
     filter: 'drop-shadow(0 0 0.75rem grey)',
   },
-  /* BottomLayer */
-  bottomContainer: {
-    position: 'fixed',
-    bottom: 0,
-    left: 0,
-    Right: 0,
-    width: 'calc(100% - 20px)',
-    marginRight: 10,
-    marginLeft: 10,
-  },
 }));
