@@ -15,6 +15,19 @@ export const useStyles = makeStyles((theme) => ({
       flexWrap: 'wrap',
     },
   },
+  heading: {
+    marginLeft: 32,
+    width: '100%',
+  },
+  sortBy: {
+    width: '100%',
+    margin: '8px 0 16px 32px',
+    '& span': {
+      cursor: 'pointer',
+      marginLeft: 16,
+      color: theme.palette.text.textBlue,
+    },
+  },
   loadingNews: {
     color: theme.palette.text.primary,
   },
