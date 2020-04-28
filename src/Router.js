@@ -7,15 +7,13 @@ import './App.scss';
 import {globalStyles} from './globalStyles';
 
 const NewsPage = lazy(() => import('./pages/NewsPage'));
-const LandingPage = lazy(() => import('./pages/LandingPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
 
 function Router(props) {
   return (
     <Switch>
-      <Route exact path="/" component={suspenseHoc(headerHoc(LandingPage))} />
+      <Route exact path="/" component={suspenseHoc(headerHoc(HomePage))} />
       <Route exact path="/news" component={suspenseHoc(headerHoc(NewsPage))} />
-      <Route exact path="/home" component={suspenseHoc(headerHoc(HomePage))} />
     </Switch>
   );
 }

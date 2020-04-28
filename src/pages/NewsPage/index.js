@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import NewsCard from './components/NewsCard';
 import {useStyles} from './styles';
 import {useTranslation} from 'react-i18next';
+import PageTitle from '../../modules/PageTitle';
 
 const NewsPage = () => {
   const [newsArticles, setNewsArticles] = useState(null);
   const [sortBy, setSortBy] = useState('popularity');
   const classes = useStyles();
-  const [, i18n] = useTranslation();
+  const [t, i18n] = useTranslation();
 
   useEffect(() => {
     const query = 'india+corona+covid+covid+19+Covid-19+Coronavirus';
@@ -37,11 +38,21 @@ const NewsPage = () => {
 
   return (
     <div className={classes.root}>
-      <h1 className={classes.heading}>NEWS</h1>
+      <PageTitle>{t('News')}</PageTitle>
       <span className={classes.sortBy}>
-        Sort By:
-        <span onClick={() => handleSort('popularity')}>Top Headlines</span>
-        <span onClick={() => handleSort('publishedAt')}>Latest News</span>
+        {t('Sort_By')}:
+        <span
+          style={{opacity: sortBy === 'popularity' ? 1 : 0.5}}
+          onClick={() => handleSort('popularity')}
+        >
+          {t('Top_Headlines')}
+        </span>
+        <span
+          style={{opacity: sortBy === 'publishedAt' ? 1 : 0.5}}
+          onClick={() => handleSort('publishedAt')}
+        >
+          {t('Latest_News')}
+        </span>
       </span>
       {newsArticles !== null ? (
         newsArticles.map((newsArticle) => (

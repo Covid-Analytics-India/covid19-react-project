@@ -12,7 +12,7 @@ export const useStyles = makeStyles((theme) => ({
     // Above tablet size
     [theme.breakpoints.up('sm')]: {
       width: 380,
-      height: 220,
+      height: 230,
       padding: '4px 8px 8px 8px',
     },
   },

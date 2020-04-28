@@ -15,17 +15,18 @@ export const useStyles = makeStyles((theme) => ({
       flexWrap: 'wrap',
     },
   },
-  heading: {
-    marginLeft: 32,
-    width: '100%',
-  },
   sortBy: {
     width: '100%',
-    margin: '8px 0 16px 32px',
+    margin: '8px 0 16px 0px',
+    color: theme.palette.text.primary,
     '& span': {
       cursor: 'pointer',
       marginLeft: 16,
       color: theme.palette.text.textBlue,
+    },
+    // Above tablet size
+    [theme.breakpoints.up('sm')]: {
+      margin: '8px 0 16px 32px',
     },
   },
   loadingNews: {

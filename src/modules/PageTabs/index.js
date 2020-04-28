@@ -17,14 +17,13 @@ function PageTabs() {
     if (newValue !== path) {
       dispatch(push(newValue));
     }
-    console.log(newValue);
   };
   return (
     <StyledTabs value={path} onChange={handleNav} centered>
       <Tab
         className={classes.tab}
         label={t('Home')}
-        value="/home"
+        value="/"
         disableRipple={true}
       />
       <Tab
@@ -33,7 +32,7 @@ function PageTabs() {
         value="/news"
         disableRipple={true}
       />
-      <Tab
+      {/* <Tab
         className={classes.tab}
         label={t('Tips')}
         value="/tips"
@@ -44,7 +43,7 @@ function PageTabs() {
         label={t('Research')}
         value="/research"
         disableRipple={true}
-      />
+      /> */}
     </StyledTabs>
   );
 }

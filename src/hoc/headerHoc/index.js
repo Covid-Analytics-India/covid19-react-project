@@ -18,10 +18,6 @@ import {withTranslation} from 'react-i18next';
 
 const headerHoc = (WrapComponent) => {
   class HocContent extends React.Component {
-    constructor(props) {
-      super(props);
-    }
-
     handleChange = (checked) =>
       this.props.i18n.changeLanguage(checked ? 'hi' : 'en');
 
@@ -42,7 +38,7 @@ const headerHoc = (WrapComponent) => {
               <BinarySwitch
                 className={classes.langToggle}
                 leftVal="English"
-                rightVal="Hindi"
+                rightVal="हिन्दी"
                 handleChange={this.handleChange}
                 rightChecked={i18n.language === 'hi'}
               />

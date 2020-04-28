@@ -42,7 +42,7 @@ function App(props) {
     palette: {
       type: 'dark',
       primary: {main: '#323232'},
-      secondary: {main: '#17E820', buttonTheme: '#0156FF'},
+      secondary: {main: '#17E820', buttonTheme: '#0185FF'},
       background: {
         default: '#121212',
         paper: '#2C2C2C',
@@ -51,7 +51,7 @@ function App(props) {
         disabled: 'rgba(255, 255, 255, 0.54)',
         hint: 'rgba(255, 255, 255, 0.54)',
         secondary: 'rgba(255, 255, 255, 0.75)',
-        textBlue: '#0156FF',
+        textBlue: '#0185FF',
         textBlueDisabled: '#78A5FF',
       },
       border: {
