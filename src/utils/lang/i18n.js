@@ -5,24 +5,22 @@ i18n.use(LanguageDetector).init({
   resources: {
     en: {
       translations: {
-        // landing page
-        menu: 'menu',
-        contact_us: 'contact us',
-        Wello_Horld: 'Wello Horld',
-        our_partners: 'our partners',
-        // Home Page
-        add: '+  ADD',
+        // Page Tabs
+        Home: 'Home',
+        News: 'News',
+        Sort_By: 'Sort By',
+        Top_Headlines: 'Top Headlines',
+        Latest_News: 'Latest News',
       },
     },
     hi: {
       translations: {
-        // landing page
-        menu: 'मेन्यू',
-        contact_us: 'संपर्क करें',
-        Wello_Horld: 'नमस्ते दुनिया',
-        our_partners: 'हमारे सहयोगी',
-        // Home Page
-        add: '+  जोड़ना',
+        // Page Tabs
+        Home: 'घर',
+        News: 'समाचार',
+        Sort_By: 'क्रमबद्ध करें',
+        Top_Headlines: 'शीर्ष सुर्खियाँ',
+        Latest_News: 'ताज़ा खबर',
       },
     },
   },
