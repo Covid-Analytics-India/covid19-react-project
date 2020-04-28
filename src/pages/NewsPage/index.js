@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {v1 as uuidv1} from 'uuid';
 import NewsCard from './components/NewsCard';
 import {useStyles} from './styles';
 import {useTranslation} from 'react-i18next';
@@ -12,7 +13,7 @@ const NewsPage = () => {
 
   useEffect(() => {
     const query = 'india+corona+covid+covid+19+Covid-19+Coronavirus';
-    const apiKey = '9e58cfc12b0142d9a23653cd75db603e';
+    const apiKey = '972190aff7fe45938a85fdd9235d154e';
     const language = i18n.language;
 
     const fetchNewsData = async () => {
@@ -56,10 +57,7 @@ const NewsPage = () => {
       </span>
       {newsArticles !== null ? (
         newsArticles.map((newsArticle) => (
-          <NewsCard
-            key={`${newsArticle.publishedAt}${newsArticle.author}`}
-            newsArticle={newsArticle}
-          />
+          <NewsCard key={uuidv1()} newsArticle={newsArticle} />
         ))
       ) : (
         <p className={classes.loadingNews}>Loading News for you...</p>
