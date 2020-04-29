@@ -51,6 +51,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+    marginTop: 40,
     marginBottom: 18,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
