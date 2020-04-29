@@ -1,10 +1,12 @@
 import {makeStyles} from '@material-ui/core/styles';
-
+import bkg from '../../assets/bkg3.svg';
 export const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100%',
+    height: '100vh',
     width: '100%',
     backgroundColor: theme.palette.background.default,
+    background: `url(${bkg}) center center no-repeat`,
+    backgroundSize: 'cover',
     color: theme.palette.text.primary,
     position: 'relative',
   },
