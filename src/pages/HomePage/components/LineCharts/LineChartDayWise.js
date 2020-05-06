@@ -98,7 +98,7 @@ function LineChartCummulative(props) {
           margin: {
             l: 0,
             r: 10,
-            b: 20,
+            b: 30,
             t: 10,
             pad: 0,
           },
