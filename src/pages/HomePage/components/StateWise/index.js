@@ -11,7 +11,11 @@ function StateWise(props) {
     <div className={classes.StateWise}>
       <div className={classes.Title}>{title}</div>
       <div className={classes.Content}>
-        {barChecked ? <BarGraph data={data} /> : <HeatMap data={data} />}
+        {barChecked ? (
+          <BarGraph data={data.state_wise_confirmed} />
+        ) : (
+          <HeatMap geodata={data} />
+        )}
       </div>
       <BinarySwitch
         leftVal="Heat Map"
