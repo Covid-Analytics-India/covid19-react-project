@@ -50,7 +50,27 @@ class ChoroplethMap extends React.Component {
         popupTemplate: function (geo, data) {
           // don't show tooltip if country don't present in dataset
           if (!data) {
-            return;
+            return [
+              `<div class="hoverinfo" style="
+                position: relative; 
+                background-color: ${theme.palette.background.default};
+                border-radius: 8px;
+                padding: 10px;
+              ">`,
+              '<div style="font-size: 20px; border-bottom: 1px solid gray; "><strong>',
+              geo.properties.name,
+              '</strong></div>',
+              '<br>Confirmed: <span style="color: green;"><strong>',
+              '0',
+              '</strong></span>',
+              '<br>Recovered: <span style="color: blue;"><strong>',
+              '0',
+              '</strong></span>',
+              '<br>Deceased: <span style="color: red;"><strong>',
+              '0',
+              '</strong></span>',
+              '</div>',
+            ].join('');
           }
           // find data
           const RIndex = stateDataRecovered.y.findIndex(
