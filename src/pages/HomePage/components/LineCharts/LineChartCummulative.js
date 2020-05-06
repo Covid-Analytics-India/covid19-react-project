@@ -88,10 +88,16 @@ function LineChartCummulative(props) {
             automargin: true,
             gridcolor: theme.palette.graphLines.default,
             showline: true,
+            tickfont: {
+              color: theme.palette.text.secondary,
+            },
           },
           xaxis: {
             nticks: 5,
             gridcolor: theme.palette.graphLines.default,
+            tickfont: {
+              color: theme.palette.text.secondary,
+            },
           },
           paper_bgcolor: 'rgba(0,0,0,0)',
           plot_bgcolor: 'rgba(0,0,0,0)',
