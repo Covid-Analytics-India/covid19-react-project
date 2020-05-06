@@ -1,1 +1,1 @@
-export const API_URL = 'https://api.covidanalytics.live';
+export const API_URL = 'https://devapi.covidanalytics.live';
