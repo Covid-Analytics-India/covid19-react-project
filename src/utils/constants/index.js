@@ -1,1 +1,1 @@
-export const API_URL = 'https://covid19flaskapi.herokuapp.com';
+export const API_URL = 'https://devapi.covidanalytics.live';

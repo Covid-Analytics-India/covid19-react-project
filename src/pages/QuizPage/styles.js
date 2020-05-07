@@ -36,11 +36,43 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column',
   },
+  flexColStart: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+  },
   flexRow: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+  },
+  flexRowStart: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  flexRowSpace: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: 800,
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
+  },
+  flexRowSpaceStart: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    flexDirection: 'row',
+    width: 800,
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
   },
   PieContent: {
     padding: '0 100px',
@@ -66,6 +98,14 @@ export const useStyles = makeStyles((theme) => ({
       height: 180,
     },
   },
+  headerImageSmall: {
+    height: 30,
+    marginRight: 10,
+    [theme.breakpoints.up('sm')]: {
+      marginRight: 40,
+      height: 90,
+    },
+  },
   headerText: {
     fontSize: 14,
     fontWeight: 700,
@@ -82,11 +122,39 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: 18,
     },
   },
+  headCompress: {
+    maxWidth: 600,
+  },
 
-  // Particle Styles
-  particles: {
-    height: '100vh',
-    position: 'fixed',
-    top: 0,
+  // QUIZ Styles
+  startBtn: {
+    background: theme.palette.secondary.buttonTheme,
+  },
+  QuizContainer: {
+    width: 800,
+    minHeight: 600,
+    whiteSpace: 'pre-wrap',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
+  },
+  option: {
+    height: 40,
+    width: 500,
+    margin: 15,
+    padding: 25,
+    borderRadius: 8,
+    fontSize: 20,
+    [theme.breakpoints.down('sm')]: {
+      height: 'auto',
+      width: '50vw',
+      minWidth: '50vw',
+      padding: 8,
+      margin: 5,
+      fontSize: 16,
+    },
+  },
+  progress: {
+    width: 'inherit',
   },
 }));

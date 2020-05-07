@@ -7,67 +7,57 @@ import NightsStay from '@material-ui/icons/NightsStay';
 import WbSunny from '@material-ui/icons/WbSunny';
 import {connect} from 'react-redux';
 import withStyles from '@material-ui/core/styles/withStyles';
+import {withRouter} from 'react-router-dom';
 
 import {styles} from './styles';
 import {toggleTheme} from '../../services/actions';
-import {toggleLang} from '../../services/actions';
 import BinarySwitch from '../../modules/BinarySwitch';
+import PageTabs from '../../modules/PageTabs';
 import logo from '../../assets/logo.svg';
-import {withRouter} from 'react-router-dom';
+import {withTranslation} from 'react-i18next';
 
 const headerHoc = (WrapComponent) => {
   class HocContent extends React.Component {
-    constructor(props) {
-      super(props);
-    }
-
-    handleChange = (checked) => {
-      this.setState({...this.state, checked: checked});
-      console.log(this.state.checked);
-    };
+    handleChange = (checked) =>
+      this.props.i18n.changeLanguage(checked ? 'hi' : 'en');
 
     render() {
-      const {
-        classes,
-        isHindi,
-        toggleLang,
-        isDarkTheme,
-        toggleTheme,
-        history,
-      } = this.props;
+      const {classes, i18n, isDarkTheme, toggleTheme, history} = this.props;
 
       return (
         <>
-          <AppBar position="sticky" className={classes.root}>
-            <img
-              src={logo}
-              alt="logo"
-              className={classes.logo}
-              onClick={() => history.push('/')}
-            />
-            {/* Language Toggle */}
-            <BinarySwitch
-              className={classes.langToggle}
-              leftVal="English"
-              rightVal="Hindi"
-              handleChange={toggleLang}
-              rightChecked={isHindi}
-            />
-            <Toolbar>
-              {/* Theme Toggle */}
-              <IconButton
-                className={classes.theme}
-                edge="end"
-                onClick={toggleTheme}
-              >
-                {isDarkTheme ? <NightsStay /> : <WbSunny />}
-              </IconButton>
-              <IconButton className={classes.phone} edge="end">
-                <Phone />
-              </IconButton>
-            </Toolbar>
-          </AppBar>
-
+          <div className={classes.root}>
+            <AppBar position="relative" className={classes.header}>
+              <img
+                src={logo}
+                alt="logo"
+                className={classes.logo}
+                onClick={() => history.push('/')}
+              />
+              {/* Language Toggle */}
+              <BinarySwitch
+                className={classes.langToggle}
+                leftVal="English"
+                rightVal="हिन्दी"
+                handleChange={this.handleChange}
+                rightChecked={i18n.language === 'hi'}
+              />
+              <Toolbar>
+                {/* Theme Toggle */}
+                <IconButton
+                  className={classes.theme}
+                  edge="end"
+                  onClick={toggleTheme}
+                >
+                  {isDarkTheme ? <NightsStay /> : <WbSunny />}
+                </IconButton>
+                <IconButton className={classes.phone} edge="end">
+                  <Phone />
+                </IconButton>
+              </Toolbar>
+            </AppBar>
+            <PageTabs />
+          </div>
           <WrapComponent />
         </>
       );
@@ -75,19 +65,17 @@ const headerHoc = (WrapComponent) => {
   }
 
   const mapStateToProps = (state) => ({
-    isHindi: state.lang.isHindi,
     isDarkTheme: state.theme.isDarkTheme,
   });
 
   const mapDispatchToProps = (dispatch) => ({
     toggleTheme: () => dispatch(toggleTheme()),
-    toggleLang: () => dispatch(toggleLang()),
   });
 
   return connect(
     mapStateToProps,
     mapDispatchToProps
-  )(withStyles(styles)(withRouter(HocContent)));
+  )(withStyles(styles)(withRouter(withTranslation()(HocContent))));
 };
 
 export default headerHoc;
