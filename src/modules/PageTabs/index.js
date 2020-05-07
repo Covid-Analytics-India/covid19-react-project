@@ -32,6 +32,12 @@ function PageTabs() {
         value="/news"
         disableRipple={true}
       />
+      <Tab
+        className={classes.tab}
+        label={t('Test Yourself')}
+        value="/quiz"
+        disableRipple={true}
+      />
       {/* <Tab
         className={classes.tab}
         label={t('Tips')}

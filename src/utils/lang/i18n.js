@@ -11,6 +11,7 @@ i18n.use(LanguageDetector).init({
         Sort_By: 'Sort By',
         Top_Headlines: 'Top Headlines',
         Latest_News: 'Latest News',
+        Test_Yourself: 'Test Yourself',
       },
     },
     hi: {
