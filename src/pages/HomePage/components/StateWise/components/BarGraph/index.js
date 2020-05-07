@@ -16,7 +16,7 @@ function BarGraph(props) {
           y: [...data.y],
           mode: 'lines',
           marker: {
-            color: 'black',
+            color: theme.palette.text.primary,
           },
         },
       ]}
@@ -33,9 +33,14 @@ function BarGraph(props) {
         yaxis: {
           tickfont: {
             size: matches ? 12 : 6,
+            color: theme.palette.text.secondary,
           },
           automargin: true,
-          autorange: 'reversed',
+        },
+        xaxis: {
+          tickfont: {
+            color: theme.palette.text.secondary,
+          },
         },
         width: Math.min(600, window.innerWidth - 20),
         height: matches ? 503 : 340,

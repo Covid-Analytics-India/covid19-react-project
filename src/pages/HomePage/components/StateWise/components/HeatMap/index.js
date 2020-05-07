@@ -1,98 +1,18 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Datamap from 'datamaps/dist/datamaps.world.min.js';
 import * as d3 from 'd3';
 import IndiaJson from './India.topo.json';
-import useTheme from '@material-ui/core/styles/useTheme';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import withTheme from '@material-ui/core/styles/withTheme';
 
-const ChoroplethMap = (props) => {
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
-  const stateData = props.data;
-  const stateCodes = stateData.y.map((state) => {
-    switch (state) {
-      case 'West Bengal':
-        return 'WB';
-      case 'Odisha':
-        return 'OD';
-      case 'Andhra Pradesh':
-        return 'AP';
-      case 'Jammu and Kashmir':
-        return 'JK';
-      case 'Ladakh':
-        return 'LD';
-      case 'Uttarakhand':
-        return 'UK';
-      case 'Uttar Pradesh':
-        return 'UP';
-      case 'Tripura':
-        return 'TR';
-      case 'Telangana':
-        return 'TG';
-      case 'Tamil Nadu':
-        return 'TN';
-      case 'Sikkim':
-        return 'SK';
-      case 'Rajasthan':
-        return 'RJ';
-      case 'Punjab':
-        return 'PB';
-      case 'Puducherry':
-        return 'PD';
-      case 'Delhi':
-        return 'DL';
-      case 'Nagaland':
-        return 'NL';
-      case 'Mizoram':
-        return 'MZ';
-      case 'Meghalaya':
-        return 'MG';
-      case 'Manipur':
-        return 'MN';
-      case 'Maharashtra':
-        return 'MH';
-      case 'Madhya Pradesh':
-        return 'MP';
-      case 'Lakshadweep':
-        return 'LD';
-      case 'Kerala':
-        return 'KL';
-      case 'Karnataka':
-        return 'KR';
-      case 'Jharkhand':
-        return 'JK';
-      case 'Himachal Pradesh':
-        return 'HP';
-      case 'Haryana':
-        return 'HR';
-      case 'Gujarat':
-        return 'GJ';
-      case 'Goa':
-        return 'GA';
-      case 'Daman and Diu':
-        return 'DD';
-      case 'Dadra and Nagar Haveli':
-        return 'DN';
-      case 'Chhattisgarh':
-        return 'CT';
-      case 'Chandigarh':
-        return 'CH';
-      case 'Bihar':
-        return 'BR';
-      case 'Assam':
-        return 'AS';
-      case 'Arunachal Pradesh':
-        return 'AR';
-      case 'Andaman and Nicobar Islands':
-        return 'AN';
-      default:
-        return '';
-    }
-  });
-  useEffect(() => {
-    // const viewportWidth = window.innerWidth > 600;
+class ChoroplethMap extends React.Component {
+  componentDidMount() {
+    const {geodata, theme} = this.props;
+    const stateDataConfirmed = geodata.state_wise_confirmed;
+    const stateDataRecovered = geodata.state_wise_recovered;
+    const stateDataDeaths = geodata.state_wise_deaths;
+    const stateCodes = geodata.state_codes;
     const dataset = {};
-    const data = stateData.x.map((e, i) => [stateCodes[i], e]);
+    const data = stateDataConfirmed.x.map((e, i) => [stateCodes[i], e]);
     // We need to colorize every country based on "numberOfWhatever"
     // colors should be uniq for every value.
     // For this purpose we create palette(using min/max data-value)
@@ -130,48 +50,91 @@ const ChoroplethMap = (props) => {
         popupTemplate: function (geo, data) {
           // don't show tooltip if country don't present in dataset
           if (!data) {
-            return;
+            return [
+              `<div class="hoverinfo" style="
+                position: relative; 
+                background-color: ${theme.palette.background.default};
+                border-radius: 8px;
+                padding: 10px;
+              ">`,
+              '<div style="font-size: 20px; border-bottom: 1px solid gray; "><strong>',
+              geo.properties.name,
+              '</strong></div>',
+              '<br>Confirmed: <span style="color: green;"><strong>',
+              '0',
+              '</strong></span>',
+              '<br>Recovered: <span style="color: blue;"><strong>',
+              '0',
+              '</strong></span>',
+              '<br>Deceased: <span style="color: red;"><strong>',
+              '0',
+              '</strong></span>',
+              '</div>',
+            ].join('');
           }
+          // find data
+          const RIndex = stateDataRecovered.y.findIndex(
+            (r) => r === geo.properties.name
+          );
+          const DIndex = stateDataDeaths.y.findIndex(
+            (d) => d === geo.properties.name
+          );
           // tooltip content
           return [
-            '<div class="hoverinfo" style={position: relative;}>',
-            '<strong>',
+            `<div class="hoverinfo" style="
+              position: relative; 
+              background-color: ${theme.palette.background.default};
+              border-radius: 8px;
+              padding: 10px;
+            ">`,
+            '<div style="font-size: 20px; border-bottom: 1px solid gray; "><strong>',
             geo.properties.name,
-            '</strong>',
-            '<br>Count: <strong>',
+            '</strong></div>',
+            '<br>Confirmed: <span style="color: green;"><strong>',
             data.numberOfThings,
-            '</strong>',
+            '</strong></span>',
+            '<br>Recovered: <span style="color: blue;"><strong>',
+            stateDataRecovered.x[RIndex],
+            '</strong></span>',
+            '<br>Deceased: <span style="color: red;"><strong>',
+            stateDataDeaths.x[DIndex],
+            '</strong></span>',
             '</div>',
           ].join('');
         },
       },
-      fills: {},
+      arcConfig: {
+        animationSpeed: 600,
+      },
+      fills: {defaultFill: 'white'},
       data: dataset,
       setProjection: function (element) {
         const projection = d3
           .geoMercator()
           .center([81.486328125, 22.983801417384697]) // always in [East Latitude, North Longitude]
-          .scale(window.innerWidth < 600 ? 570 : 870)
+          .scale(window.innerWidth > 600 ? 870 : 570)
           .translate(
-            window.innerWidth < 600
-              ? [element.offsetWidth / 2 - 10, element.offsetHeight / 2]
-              : [element.offsetWidth / 2 + 120, element.offsetHeight / 2 + 100]
+            window.innerWidth > 600
+              ? [element.offsetWidth / 2, element.offsetHeight / 2 - 50]
+              : [element.offsetWidth / 2 - 10, element.offsetHeight / 2]
           );
 
         const path = d3.geoPath().projection(projection);
         return {path: path, projection: projection};
       },
     });
-  }, [stateCodes, stateData.x]);
-  return (
-    <div
-      id="cloropleth_map"
-      style={{
-        height: matches ? 300 : 177,
-        width: matches ? 600 : 330,
-      }}
-    ></div>
-  );
-};
+  }
+  render() {
+    return (
+      <div
+        id="cloropleth_map"
+        style={{
+          height: window.innerWidth > 600 ? 300 : 177,
+          width: window.innerWidth > 600 ? 600 : 330,
+        }}
+      ></div>
+    );
+  }
+}
 
-export default ChoroplethMap;
+export default withTheme(ChoroplethMap);

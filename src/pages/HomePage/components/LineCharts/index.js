@@ -1,5 +1,5 @@
 import React from 'react';
-import LineChart from './LineChart';
+import LineChartCummulative from './LineChartCummulative';
 import {useStyles} from './styles';
 
 function Cummulative(props) {
@@ -8,7 +8,7 @@ function Cummulative(props) {
   return (
     <div className={classes.Cummulative}>
       <div className={classes.Title}>{title}</div>
-      <LineChart data={data} logScale={logChecked} />
+      <LineChartCummulative data={data} logScale={logChecked} />
     </div>
   );
 }

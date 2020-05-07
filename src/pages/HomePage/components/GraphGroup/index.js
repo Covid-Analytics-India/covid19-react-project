@@ -3,7 +3,7 @@ import {useStyles} from './styles';
 
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Cummulative from '../Cummulative';
+import LineCharts from '../LineCharts';
 import BinarySwitch from '../../../../modules/BinarySwitch';
 
 function GraphGroup(props) {
@@ -31,7 +31,7 @@ function GraphGroup(props) {
       {group.map(
         (data, idx) =>
           value === idx && (
-            <Cummulative
+            <LineCharts
               data={data.data}
               title={data.title}
               logChecked={logChecked}
