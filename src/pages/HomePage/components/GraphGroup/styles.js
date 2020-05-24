@@ -17,7 +17,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   tabs: {
     fontSize: 14,
-    fontWeight: 600,
+    fontWeight: 700,
     [theme.breakpoints.up('md')]: {
       fontSize: 20,
     },
@@ -25,5 +25,17 @@ export const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: 20,
     fontWeight: 600,
+  },
+  indicator0: {
+    backgroundColor: theme.palette.stats.confirmed,
+  },
+  indicator1: {
+    backgroundColor: theme.palette.stats.active,
+  },
+  indicator2: {
+    backgroundColor: theme.palette.stats.recovered,
+  },
+  indicator3: {
+    backgroundColor: theme.palette.stats.deceased,
   },
 }));

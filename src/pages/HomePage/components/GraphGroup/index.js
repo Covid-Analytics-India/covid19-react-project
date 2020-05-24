@@ -27,7 +27,12 @@ function GraphGroup(props) {
           <Tabs
             value={value}
             onChange={handleChange}
-            aria-label="simple tabs example"
+            classes={
+              (value === 0 && {indicator: classes.indicator0}) ||
+              (value === 1 && {indicator: classes.indicator1}) ||
+              (value === 2 && {indicator: classes.indicator2}) ||
+              (value === 3 && {indicator: classes.indicator3})
+            }
           >
             {group.map((data, idx) => (
               <Tab

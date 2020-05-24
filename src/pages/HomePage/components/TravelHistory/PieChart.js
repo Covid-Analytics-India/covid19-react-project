@@ -1,11 +1,23 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
+import useTheme from '@material-ui/core/styles/useTheme';
+import {darken} from '@material-ui/core/styles';
 
 function PieChart(props) {
   const {data} = props;
+  const theme = useTheme();
+  const stdColors = [
+    Object.values(theme.palette.stats)[0],
+    Object.values(theme.palette.stats)[1],
+  ];
   const newLabels = data.labels[0].map((label) =>
     label === 'Travelled from Delhi' ? label : label.slice(15)
   );
+  console.log([
+    ...stdColors.map((v) => darken(v, 0)),
+    ...stdColors.map((v) => darken(v, 0.5)),
+  ]);
+
   return (
     <Plot
       data={[
@@ -14,7 +26,20 @@ function PieChart(props) {
           values: [...data.values[0]],
           labels: [...newLabels],
           marker: {
-            color: 'black',
+            colors: [
+              darken(theme.palette.stats.active, 0.85),
+              darken(theme.palette.stats.confirmed, 0.75),
+              darken(theme.palette.stats.active, 0.75),
+              darken(theme.palette.stats.confirmed, 0.85),
+              darken(theme.palette.stats.active, 0.65),
+              darken(theme.palette.stats.confirmed, 0.65),
+              darken(theme.palette.stats.active, 0.55),
+              darken(theme.palette.stats.active, 0.45),
+            ],
+            gradient: {
+              type: 'radial',
+              color: '#FFFFFF',
+            },
           },
           hoverinfo: 'label+percent',
           textinfo: 'label+percent',

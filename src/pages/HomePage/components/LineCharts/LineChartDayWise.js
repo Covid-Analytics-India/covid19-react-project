@@ -88,12 +88,23 @@ function LineChartDayWise(props) {
             automargin: true,
             gridcolor: theme.palette.graphLines.default,
             showline: true,
+            tickfont: {
+              color: theme.palette.text.secondary,
+            },
             fixedrange: true,
           },
           xaxis: {
             nticks: 5,
             gridcolor: theme.palette.graphLines.default,
+            tickfont: {
+              color: theme.palette.text.secondary,
+            },
             fixedrange: true,
+          },
+          transition: {
+            duration: 500,
+            easing: 'cubic-in-out',
+            ordering: 'traces first',
           },
           paper_bgcolor: 'rgba(0,0,0,0)',
           plot_bgcolor: 'rgba(0,0,0,0)',

@@ -101,6 +101,11 @@ function LineChartCummulative(props) {
             },
             fixedrange: true,
           },
+          transition: {
+            duration: 500,
+            easing: 'cubic-in-out',
+            ordering: 'traces first',
+          },
           paper_bgcolor: 'rgba(0,0,0,0)',
           plot_bgcolor: 'rgba(0,0,0,0)',
           margin: {

@@ -17,6 +17,6 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   PieContent: {
-    padding: '0 100px',
+    padding: '0 40px',
   },
 }));
