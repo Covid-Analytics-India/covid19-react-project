@@ -31,10 +31,16 @@ export const lightTheme = createMuiTheme({
       low: '#F2F1FF',
       border: '#44444442',
     },
+    stats: {
+      confirmed: '#FD2A3A',
+      active: '#007AFB',
+      recovered: '#27A645',
+      deceased: '#6D757D',
+    },
   },
   spacing: 2,
   typography: {
-    fontFamily: ['Bitter'].join(','),
+    fontFamily: ['Ubuntu'].join(','),
   },
 });
 
@@ -69,10 +75,16 @@ export const darkTheme = createMuiTheme({
       low: '#2D1D25',
       border: '#ff666642',
     },
+    stats: {
+      confirmed: '#FD2A3A',
+      active: '#007AFB',
+      recovered: '#27A645',
+      deceased: '#6D757D',
+    },
   },
   spacing: 2,
   typography: {
-    fontFamily: ['Bitter'].join(','),
+    fontFamily: ['Ubuntu'].join(','),
   },
   overrides: {
     MuiTabs: {
