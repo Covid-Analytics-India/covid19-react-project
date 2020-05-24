@@ -85,7 +85,6 @@ function LineChartDayWise(props) {
         layout={{
           yaxis: {
             type: logScale ? 'log' : 'linear',
-            automargin: true,
             gridcolor: theme.palette.graphLines.default,
             showline: true,
             tickfont: {
@@ -109,14 +108,15 @@ function LineChartDayWise(props) {
           paper_bgcolor: 'rgba(0,0,0,0)',
           plot_bgcolor: 'rgba(0,0,0,0)',
           margin: {
-            l: 0,
-            r: 10,
+            l: 40,
+            r: 20,
             b: 30,
             t: 10,
             pad: 0,
           },
           width: Math.min(580, window.innerWidth - 20),
           height: Math.min(240, (window.innerWidth - 20) / 2),
+          legend: {orientation: 'h'},
         }}
         config={{
           responsive: true,
