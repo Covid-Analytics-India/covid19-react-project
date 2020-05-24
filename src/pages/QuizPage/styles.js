@@ -24,7 +24,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       justifyContent: 'center',
       alignItems: 'center',
       flexDirection: 'row',
@@ -60,7 +60,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'row',
     width: 800,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%',
     },
   },
@@ -70,7 +70,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-start',
     flexDirection: 'row',
     width: 800,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%',
     },
   },
@@ -86,14 +86,14 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: 40,
     marginBottom: 18,
     width: '100%',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       flexDirection: 'column',
     },
   },
   headerImage: {
     height: 60,
     marginRight: 10,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       marginRight: 0,
       height: 180,
     },
@@ -101,7 +101,7 @@ export const useStyles = makeStyles((theme) => ({
   headerImageSmall: {
     height: 30,
     marginRight: 10,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       marginRight: 40,
       height: 90,
     },
@@ -110,7 +110,7 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: 14,
     fontWeight: 700,
     color: theme.palette.text.primary,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       fontSize: 28,
     },
   },
@@ -118,7 +118,7 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: 10,
     fontWeight: 400,
     color: theme.palette.text.secondary,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       fontSize: 18,
     },
   },
@@ -134,7 +134,7 @@ export const useStyles = makeStyles((theme) => ({
     width: 800,
     minHeight: 600,
     whiteSpace: 'pre-wrap',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%',
     },
   },
@@ -145,7 +145,7 @@ export const useStyles = makeStyles((theme) => ({
     padding: 25,
     borderRadius: 8,
     fontSize: 20,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       height: 'auto',
       width: '50vw',
       minWidth: '50vw',

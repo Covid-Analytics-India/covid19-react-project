@@ -4,18 +4,14 @@ import BarGraph from './components/BarGraph';
 import {useStyles} from './styles';
 import BinarySwitch from '../../../../modules/BinarySwitch';
 function StateWise(props) {
-  const {title, data} = props;
+  const {title, data, barData} = props;
   const classes = useStyles();
   const [barChecked, setBarChecked] = useState(false);
   return (
     <div className={classes.StateWise}>
       <div className={classes.Title}>{title}</div>
       <div className={classes.Content}>
-        {barChecked ? (
-          <BarGraph data={data.state_wise_confirmed} />
-        ) : (
-          <HeatMap geodata={data} />
-        )}
+        {barChecked ? <BarGraph data={barData} /> : <HeatMap geodata={data} />}
       </div>
       <BinarySwitch
         leftVal="Heat Map"
