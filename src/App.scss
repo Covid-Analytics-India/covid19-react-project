@@ -36,26 +36,26 @@
 
 /** Bitter Font */
 
-@font-face {
-  font-family: 'Bitter';
-  font-style: normal;
-  font-weight: 400;
-  src: url('fonts/Bitter/Bitter-Regular.ttf') format('truetype');
-}
+// @font-face {
+//   font-family: 'Bitter';
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url('fonts/Bitter/Bitter-Regular.ttf') format('truetype');
+// }
 
-@font-face {
-  font-family: 'Bitter';
-  font-style: italic;
-  font-weight: 400;
-  src: url('fonts/Bitter/Bitter-Italic.ttf') format('truetype');
-}
+// @font-face {
+//   font-family: 'Bitter';
+//   font-style: italic;
+//   font-weight: 400;
+//   src: url('fonts/Bitter/Bitter-Italic.ttf') format('truetype');
+// }
 
-@font-face {
-  font-family: 'Bitter';
-  font-style: normal;
-  font-weight: 700;
-  src: url('fonts/Bitter/Bitter-Bold.ttf') format('truetype');
-}
+// @font-face {
+//   font-family: 'Bitter';
+//   font-style: normal;
+//   font-weight: 700;
+//   src: url('fonts/Bitter/Bitter-Bold.ttf') format('truetype');
+// }
 
 /** Color pallete */
 $gray: #6c757d;
@@ -94,7 +94,7 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   float: none !important;
-  font-family: Bitter;
+  font-family: Ubuntu;
   margin: 0;
   margin: 0 auto !important;
   max-height: 100vh;
