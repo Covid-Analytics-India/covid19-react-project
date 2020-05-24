@@ -9,7 +9,7 @@ import LandingSection from './components/LandingSection';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Divider from '@material-ui/core/Divider';
 import GraphGroup from './components/GraphGroup';
-import BarGraph from './components/StateWise/components/BarGraph';
+import DistrictWise from './components/DistrictWise';
 
 function HomePage() {
   const classes = useStyles();
@@ -59,11 +59,30 @@ function HomePage() {
               </div>
               <br />
               <Divider light variant="middle" flexItem style={{height: 1}} />
+              <br />
               <div className={classes.flexRow}>
                 {/* Travel History */}
                 <TravelHistory data={graphData.travel_history_analysis} />
-                <BarGraph
-                  data={graphData.district_wise.district_wise_confirmed}
+                <DistrictWise
+                  title="Top District Data"
+                  group={[
+                    {
+                      data: graphData.district_wise.district_wise_confirmed,
+                      title: 'Confirmed',
+                    },
+                    {
+                      data: graphData.district_wise.district_wise_active,
+                      title: 'Active',
+                    },
+                    {
+                      data: graphData.district_wise.district_wise_recovered,
+                      title: 'Recovered',
+                    },
+                    {
+                      data: graphData.district_wise.district_wise_deaths,
+                      title: 'Deceased',
+                    },
+                  ]}
                 />
               </div>
             </>
@@ -92,8 +111,26 @@ function HomePage() {
 
               {/* Travel History */}
               <TravelHistory data={graphData.travel_history_analysis} />
-              <BarGraph
-                data={graphData.district_wise.district_wise_confirmed}
+              <DistrictWise
+                title="Top District Data"
+                group={[
+                  {
+                    data: graphData.district_wise.district_wise_confirmed,
+                    title: 'Confirmed',
+                  },
+                  {
+                    data: graphData.district_wise.district_wise_active,
+                    title: 'Active',
+                  },
+                  {
+                    data: graphData.district_wise.district_wise_recovered,
+                    title: 'Recovered',
+                  },
+                  {
+                    data: graphData.district_wise.district_wise_deaths,
+                    title: 'Deceased',
+                  },
+                ]}
               />
             </>
           )}
