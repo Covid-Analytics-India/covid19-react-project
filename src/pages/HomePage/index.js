@@ -84,7 +84,11 @@ function HomePage() {
               />
 
               {/* HEATMAP / Bar */}
-              <StateWise data={graphData.state_wise} title="State-Wise Data" />
+              <StateWise
+                data={graphData.state_wise}
+                barData={graphData.state_wise.state_wise_confirmed}
+                title="State-Wise Data"
+              />
 
               {/* Travel History */}
               <TravelHistory data={graphData.travel_history_analysis} />
