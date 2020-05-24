@@ -44,7 +44,7 @@ class ChoroplethMap extends React.Component {
       geographyConfig: {
         popupOnHover: true,
         highlightOnHover: true,
-        borderColor: theme.palette.heatmap.border,
+        borderColor: theme.palette.heatmap.low,
         highlightBorderWidth: 1,
         borderWidth: 0.5,
         dataJson: IndiaJson,
@@ -54,9 +54,12 @@ class ChoroplethMap extends React.Component {
             return [
               `<div class="hoverinfo" style="
                 position: relative; 
-                background-color: ${theme.palette.background.default};
+                background-color: ${theme.palette.background.default + '52'};
+                backdrop-filter: blur(5px);
                 border-radius: 8px;
                 padding: 10px;
+                border: none;
+                box-shadow: none;
               ">`,
               '<div style="font-size: 20px; border-bottom: 1px solid gray; "><strong>',
               geo.properties.name,

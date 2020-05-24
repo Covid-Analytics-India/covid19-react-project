@@ -26,6 +26,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
+// TODO: Add District-wise data
+// TODO: Background change
+// TODO:
 
 ReactDOM.render(
   <Provider store={store}>

@@ -7,14 +7,14 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       maxWidth: 700,
     },
   },
   Title: {
     fontSize: 14,
     fontWeight: 600,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       fontSize: 20,
     },
   },

@@ -41,6 +41,7 @@ function PieChart(props) {
       config={{
         responsive: true,
         displayModeBar: false,
+        staticPlot: true,
       }}
     />
   );

@@ -5,7 +5,7 @@ import useTheme from '@material-ui/core/styles/useTheme';
 
 function BarGraph(props) {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
   const {data} = props;
   return (
     <Plot
@@ -36,11 +36,13 @@ function BarGraph(props) {
             color: theme.palette.text.secondary,
           },
           automargin: true,
+          fixedrange: true,
         },
         xaxis: {
           tickfont: {
             color: theme.palette.text.secondary,
           },
+          fixedrange: true,
         },
         width: Math.min(600, window.innerWidth - 20),
         height: matches ? 503 : 340,
