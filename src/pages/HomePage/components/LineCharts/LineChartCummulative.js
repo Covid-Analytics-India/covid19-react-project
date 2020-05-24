@@ -91,6 +91,7 @@ function LineChartCummulative(props) {
             tickfont: {
               color: theme.palette.text.secondary,
             },
+            fixedrange: true,
           },
           xaxis: {
             nticks: 5,
@@ -98,6 +99,7 @@ function LineChartCummulative(props) {
             tickfont: {
               color: theme.palette.text.secondary,
             },
+            fixedrange: true,
           },
           paper_bgcolor: 'rgba(0,0,0,0)',
           plot_bgcolor: 'rgba(0,0,0,0)',

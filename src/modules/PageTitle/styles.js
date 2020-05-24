@@ -6,7 +6,7 @@ export const useStyles = makeStyles((theme) => ({
     width: '100%',
     color: theme.palette.text.primary,
     // Above tablet size
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       marginLeft: 32,
     },
   },

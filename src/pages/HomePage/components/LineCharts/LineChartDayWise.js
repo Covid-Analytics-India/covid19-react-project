@@ -3,16 +3,16 @@ import Plot from 'react-plotly.js';
 import {useEffect} from 'react';
 import {useTheme} from '@material-ui/core/styles';
 
-function LineChartCummulative(props) {
+function LineChartDayWise(props) {
   const {data, logScale} = props;
 
-  const [cx, setcx] = useState([...data.day_wise_confirmed.x]);
-  const [rx, setrx] = useState([...data.recovered_cumulative.x]);
-  const [dx, setdx] = useState([...data.deaths_cumulative.x]);
+  const [cx, setcx] = useState([...data.day_wise_encountered.x]);
+  const [rx, setrx] = useState([...data.day_wise_recovered.x]);
+  const [dx, setdx] = useState([...data.day_wise_deaths.x]);
 
-  const [cy] = useState([...data.day_wise_confirmed.y]);
-  const [ry] = useState([...data.recovered_cumulative.y]);
-  const [dy] = useState([...data.deaths_cumulative.y]);
+  const [cy] = useState([...data.day_wise_encountered.y]);
+  const [ry] = useState([...data.day_wise_recovered.y]);
+  const [dy] = useState([...data.day_wise_deaths.y]);
 
   const theme = useTheme();
   const months = [
@@ -88,10 +88,12 @@ function LineChartCummulative(props) {
             automargin: true,
             gridcolor: theme.palette.graphLines.default,
             showline: true,
+            fixedrange: true,
           },
           xaxis: {
             nticks: 5,
             gridcolor: theme.palette.graphLines.default,
+            fixedrange: true,
           },
           paper_bgcolor: 'rgba(0,0,0,0)',
           plot_bgcolor: 'rgba(0,0,0,0)',
@@ -113,4 +115,4 @@ function LineChartCummulative(props) {
     )
   );
 }
-export default LineChartCummulative;
+export default LineChartDayWise;
