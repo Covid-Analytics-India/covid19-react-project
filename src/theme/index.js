@@ -86,14 +86,4 @@ export const darkTheme = createMuiTheme({
   typography: {
     fontFamily: ['Ubuntu'].join(','),
   },
-  overrides: {
-    MuiTabs: {
-      text: {
-        color: 'primary',
-      },
-      indicator: {
-        color: 'primary',
-      },
-    },
-  },
 });

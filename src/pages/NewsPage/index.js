@@ -1,37 +1,62 @@
+import Axios from 'axios';
 import React, {useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {v1 as uuidv1} from 'uuid';
+import PageTitle from '../../modules/PageTitle';
+import {API_URL} from '../../utils/constants';
 import NewsCard from './components/NewsCard';
 import {useStyles} from './styles';
-import {useTranslation} from 'react-i18next';
-import PageTitle from '../../modules/PageTitle';
 
 const NewsPage = () => {
   const [newsArticles, setNewsArticles] = useState(null);
+  const [fetchedData, setfetchedData] = useState(null);
   const [sortBy, setSortBy] = useState('popularity');
   const classes = useStyles();
   const [t, i18n] = useTranslation();
 
   useEffect(() => {
-    const query = 'india+corona+covid+covid+19+Covid-19+Coronavirus';
-    const apiKey = '972190aff7fe45938a85fdd9235d154e';
-    const language = i18n.language;
-
     const fetchNewsData = async () => {
+      const headers = {
+        headers: {
+          Accept: 'application/json',
+          'Content-type': 'application.json',
+        },
+      };
       try {
-        const response = await fetch(
-          `https://newsapi.org/v2/everything?language=${language}&q=${query}&sortBy=${sortBy}&apiKey=${apiKey}`
-        );
-        const newsArticles = await response.json();
-        console.log(newsArticles);
-        setNewsArticles(newsArticles.articles);
+        const response = await Axios.get(`${API_URL}/api/get_news`, headers);
+        setfetchedData(await response.data);
+        // setNewsArticles(newsArticles.en_popularity.articles);
       } catch (e) {
-        console.log(e);
+        console.error(e);
         setNewsArticles(null);
       }
     };
 
     fetchNewsData();
-  }, [i18n.language, sortBy]);
+  }, []);
+
+  useEffect(() => {
+    const language = i18n.language;
+    if (fetchedData) {
+      switch (`${language}_${sortBy}`) {
+        case 'en_popularity':
+          setNewsArticles(fetchedData.en_popularity.articles);
+          break;
+        case 'hi_popularity':
+          setNewsArticles(fetchedData.hi_popularity.articles);
+          break;
+        case 'en_published':
+          setNewsArticles(fetchedData.en_published.articles);
+          break;
+        case 'hi_published':
+          setNewsArticles(fetchedData.hi_published.articles);
+          break;
+        default:
+          console.error('Unable to Load news :(');
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i18n.language, sortBy, fetchedData]);
 
   const handleSort = (value) => {
     if (sortBy !== value) setSortBy(value);
@@ -49,8 +74,8 @@ const NewsPage = () => {
           {t('Top_Headlines')}
         </span>
         <span
-          style={{opacity: sortBy === 'publishedAt' ? 1 : 0.5}}
-          onClick={() => handleSort('publishedAt')}
+          style={{opacity: sortBy === 'published' ? 1 : 0.5}}
+          onClick={() => handleSort('published')}
         >
           {t('Latest_News')}
         </span>
