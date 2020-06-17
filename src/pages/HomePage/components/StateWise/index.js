@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import HeatMap from './components/HeatMap';
-import BarGraph from './components/BarGraph';
+import BarGraph from '../../modules/BarGraph';
 import {useStyles} from './styles';
 import BinarySwitch from '../../../../modules/BinarySwitch';
 function StateWise(props) {

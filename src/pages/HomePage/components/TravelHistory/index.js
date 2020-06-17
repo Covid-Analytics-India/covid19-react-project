@@ -1,5 +1,5 @@
 import React from 'react';
-import PieChart from './PieChart';
+import PieChart from '../../modules/PieChart';
 import {useStyles} from './styles';
 function TravelHistory(props) {
   const {data} = props;
@@ -7,7 +7,7 @@ function TravelHistory(props) {
   return (
     <div className={classes.TravelHistory}>
       <div className={classes.Title}>{data.title}</div>
-      <PieChart data={data} />
+      <PieChart data={data} travelHistory />
       <div className={classes.PieContent}>
         It has been observed that Most of the cases have association of a person
         who has a travel history from the State of Delhi, the capital, either by

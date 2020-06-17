@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useStyles} from './styles';
-import BarGraph from './components/BarGraph';
+import BarGraph from '../../modules/BarGraph';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
