@@ -4,27 +4,21 @@ import useTheme from '@material-ui/core/styles/useTheme';
 import {darken} from '@material-ui/core/styles';
 
 function PieChart(props) {
-  const {data} = props;
+  const {data, travelHistory} = props;
   const theme = useTheme();
-  const stdColors = [
-    Object.values(theme.palette.stats)[0],
-    Object.values(theme.palette.stats)[1],
-  ];
-  const newLabels = data.labels[0].map((label) =>
-    label === 'Travelled from Delhi' ? label : label.slice(15)
-  );
-  console.log([
-    ...stdColors.map((v) => darken(v, 0)),
-    ...stdColors.map((v) => darken(v, 0.5)),
-  ]);
+  const newLabels =
+    travelHistory &&
+    data.labels[0].map((label) =>
+      label === 'Travelled from Delhi' ? label : label.slice(15)
+    );
 
   return (
     <Plot
       data={[
         {
           ...data,
-          values: [...data.values[0]],
-          labels: [...newLabels],
+          values: [...(travelHistory ? data.values[0] : data.values)],
+          labels: [...(travelHistory ? newLabels : data.labels)],
           marker: {
             colors: [
               darken(theme.palette.stats.active, 0.85),
