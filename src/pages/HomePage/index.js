@@ -11,6 +11,10 @@ import Divider from '@material-ui/core/Divider';
 import GraphGroup from './components/GraphGroup';
 import DistrictWise from './components/DistrictWise';
 import Footer from '../../modules/Footer';
+import BeforeAfterLockdown from './components/BeforeAfterLockdown';
+import AgeAnalysis from './components/AgeAnalysis';
+import GenderAgeCorrelation from './components/GenderAgeCorrelation';
+import GenderAnalysis from './components/GenderAnalysis';
 
 function HomePage() {
   const classes = useStyles();
@@ -31,8 +35,8 @@ function HomePage() {
       <div className={classes.flexCol}>
         <div className={classes.root}>
           <div className={classes.compressor}>
-            {/* Header Section  */}
             <LandingSection />
+
             {matches ? (
               <>
                 <div className={classes.flexRow}>
@@ -49,8 +53,8 @@ function HomePage() {
                       },
                     ]}
                   />
+
                   <div className={classes.HeatMap}>
-                    {/* HEATMAP / Bar */}
                     <StateWise
                       data={graphData.state_wise}
                       barData={graphData.state_wise.state_wise_confirmed}
@@ -58,11 +62,12 @@ function HomePage() {
                     />
                   </div>
                 </div>
+
                 <br />
                 <Divider light variant="middle" flexItem style={{height: 1}} />
                 <br />
+
                 <div className={classes.flexRow}>
-                  {/* Travel History */}
                   <TravelHistory data={graphData.travel_history_analysis} />
                   <DistrictWise
                     title="Top District Data"
@@ -86,6 +91,42 @@ function HomePage() {
                     ]}
                   />
                 </div>
+
+                <br />
+                <Divider light variant="middle" flexItem style={{height: 1}} />
+                <br />
+
+                <BeforeAfterLockdown
+                  data={graphData.before_vs_after_lockdown}
+                  title="Before vs After Lockdown"
+                />
+
+                <br />
+                <Divider light variant="middle" flexItem style={{height: 1}} />
+                <br />
+
+                <AgeAnalysis
+                  data={graphData.age_analysis}
+                  title="Age Analysis"
+                />
+
+                <br />
+                <Divider light variant="middle" flexItem style={{height: 1}} />
+                <br />
+
+                <GenderAnalysis
+                  data={graphData.gender_analysis}
+                  title="Gender Ratio of Patients"
+                />
+
+                <br />
+                <Divider light variant="middle" flexItem style={{height: 1}} />
+                <br />
+
+                <GenderAgeCorrelation
+                  data={graphData.gender_age_correlation}
+                  title="Gender to Age Correlation"
+                />
               </>
             ) : (
               <>
@@ -103,14 +144,12 @@ function HomePage() {
                   ]}
                 />
 
-                {/* HEATMAP / Bar */}
                 <StateWise
                   data={graphData.state_wise}
                   barData={graphData.state_wise.state_wise_confirmed}
                   title="State-Wise Data"
                 />
 
-                {/* Travel History */}
                 <TravelHistory data={graphData.travel_history_analysis} />
                 <DistrictWise
                   title="Top District Data"
@@ -132,6 +171,42 @@ function HomePage() {
                       title: 'Deceased',
                     },
                   ]}
+                />
+
+                <br />
+                <Divider light variant="middle" flexItem style={{height: 1}} />
+                <br />
+
+                <BeforeAfterLockdown
+                  data={graphData.before_vs_after_lockdown}
+                  title="Before vs After Lockdown"
+                />
+
+                <br />
+                <Divider light variant="middle" flexItem style={{height: 1}} />
+                <br />
+
+                <AgeAnalysis
+                  data={graphData.age_analysis}
+                  title="Age Analysis"
+                />
+
+                <br />
+                <Divider light variant="middle" flexItem style={{height: 1}} />
+                <br />
+
+                <GenderAnalysis
+                  data={graphData.gender_analysis}
+                  title="Gender Ratio of Patients"
+                />
+
+                <br />
+                <Divider light variant="middle" flexItem style={{height: 1}} />
+                <br />
+
+                <GenderAgeCorrelation
+                  data={graphData.gender_age_correlation}
+                  title="Gender to Age Correlation"
                 />
               </>
             )}
