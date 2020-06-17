@@ -28,7 +28,7 @@ const graphReducer = (state = graphState, action) => {
     case actions.GET_GRAPH_DATA_ALL_SUCCESS:
       return Object.assign({}, state, {
         graphDataPending: false,
-        graphData: action.payload,
+        graphData: {...state.graphData, ...action.payload},
       });
     case actions.GET_GRAPH_DATA_ALL_FAILED:
       return Object.assign({}, state, {
