@@ -92,41 +92,68 @@ function HomePage() {
                   />
                 </div>
 
-                <br />
-                <Divider light variant="middle" flexItem style={{height: 1}} />
-                <br />
+                {graphData.before_vs_after_lockdown &&
+                  graphData.age_analysis &&
+                  graphData.gender_analysis &&
+                  graphData.gender_age_correlation && (
+                    <>
+                      <br />
+                      <Divider
+                        light
+                        variant="middle"
+                        flexItem
+                        style={{height: 1}}
+                      />
+                      <br />
 
-                <BeforeAfterLockdown
-                  data={graphData.before_vs_after_lockdown}
-                  title="Before vs After Lockdown"
-                />
+                      <BeforeAfterLockdown
+                        data={graphData.before_vs_after_lockdown}
+                        title="Before vs After Lockdown"
+                      />
 
-                <br />
-                <Divider light variant="middle" flexItem style={{height: 1}} />
-                <br />
+                      <br />
+                      <Divider
+                        light
+                        variant="middle"
+                        flexItem
+                        style={{height: 1}}
+                      />
+                      <br />
 
-                <AgeAnalysis
-                  data={graphData.age_analysis}
-                  title="Age Analysis"
-                />
+                      <AgeAnalysis
+                        data={graphData.age_analysis}
+                        title="Age Analysis"
+                      />
 
-                <br />
-                <Divider light variant="middle" flexItem style={{height: 1}} />
-                <br />
+                      <br />
+                      <Divider
+                        light
+                        variant="middle"
+                        flexItem
+                        style={{height: 1}}
+                      />
+                      <br />
 
-                <GenderAnalysis
-                  data={graphData.gender_analysis}
-                  title="Gender Ratio of Patients"
-                />
+                      <GenderAnalysis
+                        data={graphData.gender_analysis}
+                        title="Gender Ratio of Patients"
+                      />
 
-                <br />
-                <Divider light variant="middle" flexItem style={{height: 1}} />
-                <br />
+                      <br />
+                      <Divider
+                        light
+                        variant="middle"
+                        flexItem
+                        style={{height: 1}}
+                      />
+                      <br />
 
-                <GenderAgeCorrelation
-                  data={graphData.gender_age_correlation}
-                  title="Gender to Age Correlation"
-                />
+                      <GenderAgeCorrelation
+                        data={graphData.gender_age_correlation}
+                        title="Gender to Age Correlation"
+                      />
+                    </>
+                  )}
               </>
             ) : (
               <>

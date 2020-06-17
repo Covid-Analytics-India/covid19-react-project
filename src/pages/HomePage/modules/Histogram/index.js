@@ -18,11 +18,14 @@ function Histogram(props) {
     },
   ];
 
-  const correlationData = Object.keys(data)
-    .map(
-      (d) => Array.isArray(data[d]) && {x: data[d], type: 'histogram', name: d}
-    )
-    .filter((d) => d);
+  const correlationData =
+    correlation &&
+    Object.keys(data)
+      .map(
+        (d) =>
+          Array.isArray(data[d]) && {x: data[d], type: 'histogram', name: d}
+      )
+      .filter((d) => d);
 
   console.log('NB: ', correlationData);
   return (
