@@ -31,7 +31,7 @@ function BarGraph(props) {
           ordering: 'traces first',
         },
         margin: {
-          l: 70,
+          l: 120,
           r: 10,
           b: 20,
           t: 10,
