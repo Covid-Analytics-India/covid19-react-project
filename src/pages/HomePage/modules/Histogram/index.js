@@ -43,7 +43,7 @@ function Histogram(props) {
         margin: {
           l: 10,
           r: 10,
-          b: 20,
+          b: 30,
           t: 10,
           pad: 0,
         },
