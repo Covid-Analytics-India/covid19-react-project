@@ -31,18 +31,22 @@ function AfterLockdown(props) {
       return date.getDate() + ' ' + months[date.getMonth()];
     });
     setdx(ddates);
+    console.log(ddates);
     const parsedShapes = shapes.map((shape) => {
       const date0 = new Date(shape.x0 * 1000);
       const date1 = new Date(shape.x1 * 1000);
       return {
         ...shape,
         fillcolor: theme.palette.stats.confirmed,
+        line: {
+          ...shape.line,
+          color: theme.palette.stats.confirmed,
+        },
         x0: date0.getDate() + ' ' + months[date0.getMonth()],
         x1: date1.getDate() + ' ' + months[date1.getMonth()],
       };
     });
     setshapes(parsedShapes);
-    console.log(parsedShapes);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
