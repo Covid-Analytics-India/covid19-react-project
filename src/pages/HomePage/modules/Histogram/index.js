@@ -4,7 +4,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useTheme from '@material-ui/core/styles/useTheme';
 
 function Histogram(props) {
-  const {data, color, correlation} = props;
+  const {data, color, correlation, xlabel, ylabel, legend} = props;
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('md'));
   const colors = [...Object.values(theme.palette.stats)];
@@ -31,6 +31,18 @@ function Histogram(props) {
     <Plot
       data={correlation ? correlationData : generalData}
       layout={{
+        annotations: legend
+          ? [
+              {
+                x: 0.5,
+                y: -0.12,
+                showarrow: false,
+                text: xlabel,
+                xref: 'paper',
+                yref: 'paper',
+              },
+            ]
+          : [],
         barmode: 'stack',
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
@@ -47,6 +59,9 @@ function Histogram(props) {
           pad: 0,
         },
         yaxis: {
+          title: {
+            text: ylabel,
+          },
           tickfont: {
             size: matches ? 12 : 6,
             color: theme.palette.text.secondary,
@@ -55,8 +70,16 @@ function Histogram(props) {
           fixedrange: true,
         },
         xaxis: {
+          title: !legend
+            ? {
+                text: xlabel,
+                xref: 'paper',
+                position: {x: 0},
+              }
+            : null,
           tickfont: {
             color: theme.palette.text.secondary,
+            size: matches ? 14 : 10,
           },
           fixedrange: true,
         },

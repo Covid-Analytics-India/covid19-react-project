@@ -1,20 +1,20 @@
 import React from 'react';
-import After from './After';
 import {useStyles} from './styles';
-import Before from './Before';
+import MortalityRates from './MortalityRates';
+import RecoveryRates from './RecoveryRates';
 
-function BeforeAfterLockdown(props) {
+function Rates(props) {
   const {title, data} = props;
   const classes = useStyles();
   return (
     <>
       <div className={classes.Title}>{title}</div>
       <div className={`${classes.BeforeAfterLockdown} ${classes.GraphGroup}`}>
-        <Before data={data.before} />
+        <MortalityRates data={data.mortality_rate} />
         <br />
-        <After data={data.after} />
+        <RecoveryRates data={data.recovery_rate} />
       </div>
     </>
   );
 }
-export default BeforeAfterLockdown;
+export default Rates;

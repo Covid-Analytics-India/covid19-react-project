@@ -3,7 +3,7 @@ import Plot from 'react-plotly.js';
 import {useTheme} from '@material-ui/core/styles';
 
 function AfterLockdown(props) {
-  const {data, logScale} = props;
+  const {data} = props;
 
   const [dx, setdx] = useState([...data.x]);
   const [dy] = useState([...data.y]);
@@ -36,6 +36,7 @@ function AfterLockdown(props) {
       const date1 = new Date(shape.x1 * 1000);
       return {
         ...shape,
+        fillcolor: theme.palette.stats.confirmed,
         x0: date0.getDate() + ' ' + months[date0.getMonth()],
         x1: date1.getDate() + ' ' + months[date1.getMonth()],
       };
@@ -55,12 +56,15 @@ function AfterLockdown(props) {
             mode: 'bar',
             type: 'bar',
             name: 'After Lockdown',
+            marker: {
+              color: theme.palette.stats.active,
+            },
           },
         ]}
         layout={{
           shapes: [...shapes],
+          title: 'After/During Lockdown(s)',
           yaxis: {
-            type: logScale ? 'log' : 'linear',
             gridcolor: theme.palette.graphLines.default,
             showline: true,
             tickfont: {
@@ -89,7 +93,7 @@ function AfterLockdown(props) {
             l: 50,
             r: 20,
             b: 40,
-            t: 10,
+            t: 25,
             pad: 0,
           },
           width: Math.min(580, window.innerWidth - 20),

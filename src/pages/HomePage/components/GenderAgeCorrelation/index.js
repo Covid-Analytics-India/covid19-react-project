@@ -9,7 +9,13 @@ function GenderAgeCorrelation(props) {
     <>
       <div className={classes.Title}>{title}</div>
       <div className={`${classes.GenderAgeCorrelation}`}>
-        <Histogram data={data} correlation />
+        <Histogram
+          data={data}
+          correlation
+          xlabel="Age in Years"
+          ylabel="Number of Confirmed Cases (by Gender)"
+          legend
+        />
       </div>
     </>
   );

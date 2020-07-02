@@ -9,7 +9,11 @@ function AgeAnalysis(props) {
     <>
       <div className={classes.Title}>{title}</div>
       <div className={`${classes.AgeAnalysis}`}>
-        <Histogram data={data} />
+        <Histogram
+          data={data}
+          xlabel="Age in Years"
+          ylabel="Number of Confirmed Cases"
+        />
       </div>
     </>
   );

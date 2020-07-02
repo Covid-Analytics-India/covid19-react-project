@@ -1,67 +1,43 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Plot from 'react-plotly.js';
-import {useTheme} from '@material-ui/core/styles';
-
-function AfterLockdown(props) {
+import useTheme from '@material-ui/core/styles/useTheme';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+function MortalityRates(props) {
   const {data} = props;
 
-  const [dx, setdx] = useState([...data.x]);
-  const [dy] = useState([...data.y]);
+  const [dx] = useState([...data.x]);
 
   const theme = useTheme();
-  const months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-
-  useEffect(() => {
-    const ddates = dx.map((timestamp) => {
-      const date = new Date(timestamp * 1000);
-      return date.getDate() + ' ' + months[date.getMonth()];
-    });
-    setdx(ddates);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
   return (
     dx.length > 0 && (
       <Plot
         data={[
           {
             ...data,
-            x: [...dx],
-            y: [...dy],
             mode: 'bar',
             type: 'bar',
-            line: {},
-            name: 'Before Lockdown',
+            name: 'Mortality Rates',
             marker: {
-              color: theme.palette.stats.active,
+              color: theme.palette.stats.confirmed,
             },
           },
         ]}
         layout={{
-          title: 'Before Lockdown',
+          title: {
+            text: data.title,
+            xref: 'container',
+          },
           yaxis: {
             gridcolor: theme.palette.graphLines.default,
             showline: true,
             tickfont: {
+              size: matches ? 12 : 10,
               color: theme.palette.text.secondary,
             },
             fixedrange: true,
-            title: data.y_label,
           },
           xaxis: {
-            nticks: 5,
             gridcolor: theme.palette.graphLines.default,
             tickfont: {
               color: theme.palette.text.secondary,
@@ -77,9 +53,9 @@ function AfterLockdown(props) {
           paper_bgcolor: 'rgba(0,0,0,0)',
           plot_bgcolor: 'rgba(0,0,0,0)',
           margin: {
-            l: 50,
+            l: 120,
             r: 20,
-            b: 40,
+            b: 35,
             t: 25,
             pad: 0,
           },
@@ -95,4 +71,4 @@ function AfterLockdown(props) {
     )
   );
 }
-export default AfterLockdown;
+export default MortalityRates;

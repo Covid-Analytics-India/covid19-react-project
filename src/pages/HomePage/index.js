@@ -15,6 +15,8 @@ import BeforeAfterLockdown from './components/BeforeAfterLockdown';
 import AgeAnalysis from './components/AgeAnalysis';
 import GenderAgeCorrelation from './components/GenderAgeCorrelation';
 import GenderAnalysis from './components/GenderAnalysis';
+import Rates from './components/Rates';
+import Testing from './components/Testing';
 
 function HomePage() {
   const classes = useStyles();
@@ -111,6 +113,18 @@ function HomePage() {
                         data={graphData.before_vs_after_lockdown}
                         title="Before vs After Lockdown"
                       />
+                      <br />
+
+                      <Rates
+                        data={graphData.rates}
+                        title="Mortality vs Recovery"
+                      />
+                      <br />
+
+                      <Testing
+                        data={graphData.testing_analysis}
+                        title="Mortality vs Recovery"
+                      />
 
                       <br />
                       <Divider
@@ -172,13 +186,26 @@ function HomePage() {
                   ]}
                 />
 
+                <br />
+                <Divider light variant="middle" flexItem style={{height: 1}} />
+                <br />
+
                 <StateWise
                   data={graphData.state_wise}
                   barData={graphData.state_wise.state_wise_confirmed}
                   title="State-Wise Data"
                 />
 
+                <br />
+                <Divider light variant="middle" flexItem style={{height: 1}} />
+                <br />
+
                 <TravelHistory data={graphData.travel_history_analysis} />
+
+                <br />
+                <Divider light variant="middle" flexItem style={{height: 1}} />
+                <br />
+
                 <DistrictWise
                   title="Top District Data"
                   group={[
@@ -208,6 +235,21 @@ function HomePage() {
                 <BeforeAfterLockdown
                   data={graphData.before_vs_after_lockdown}
                   title="Before vs After Lockdown"
+                />
+
+                <br />
+                <Divider light variant="middle" flexItem style={{height: 1}} />
+                <br />
+
+                <Rates data={graphData.rates} title="Mortality vs Recovery" />
+
+                <br />
+                <Divider light variant="middle" flexItem style={{height: 1}} />
+                <br />
+
+                <Testing
+                  data={graphData.testing_analysis}
+                  title="Testing Analysis"
                 />
 
                 <br />
