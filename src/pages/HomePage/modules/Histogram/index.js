@@ -27,7 +27,6 @@ function Histogram(props) {
       )
       .filter((d) => d);
 
-  console.log('NB: ', correlationData);
   return (
     <Plot
       data={correlation ? correlationData : generalData}
