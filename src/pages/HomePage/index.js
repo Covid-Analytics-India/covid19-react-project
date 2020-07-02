@@ -31,10 +31,11 @@ function HomePage() {
       await dispatch(getAllGraphData);
     };
     fetchGraphData();
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log(graphData);
   return Object.keys(graphData).length > 0 ? (
     <>
-      {console.log(graphData)}
       <div className={classes.flexCol}>
         <div className={classes.root}>
           <div className={classes.compressor}>
