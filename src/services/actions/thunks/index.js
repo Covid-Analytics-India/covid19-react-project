@@ -46,7 +46,7 @@ export const getAllGraphData = async (dispatch) => {
       type: actions.GET_GRAPH_DATA_ALL_SUCCESS,
       payload: res.data,
     });
-    await dispatch(getAllAnalysis);
+    // await dispatch(getAllAnalysis);
     dispatch({type: actions.SET_LOADER, payload: false});
   } catch (err) {
     dispatch({type: actions.GET_GRAPH_DATA_ALL_FAILED, payload: err});
