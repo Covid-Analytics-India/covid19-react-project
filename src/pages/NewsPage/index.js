@@ -24,8 +24,9 @@ const NewsPage = () => {
       };
       try {
         const response = await Axios.get(`${API_URL}/api/get_news`, headers);
-        setfetchedData(await response.data);
-        // setNewsArticles(newsArticles.en_popularity.articles);
+        console.log(response);
+        setfetchedData(response.data);
+        setNewsArticles(response.data.en_popularity.articles);
       } catch (e) {
         console.error(e);
         setNewsArticles(null);
@@ -37,14 +38,19 @@ const NewsPage = () => {
 
   useEffect(() => {
     const language = i18n.language;
+    console.log('SET SORT BY');
     if (fetchedData) {
+      console.log('FETCH DATA', `${language}_${sortBy}`);
+
       switch (`${language}_${sortBy}`) {
+        case 'en-US_popularity':
         case 'en_popularity':
           setNewsArticles(fetchedData.en_popularity.articles);
           break;
         case 'hi_popularity':
           setNewsArticles(fetchedData.hi_popularity.articles);
           break;
+        case 'en-US_published':
         case 'en_published':
           setNewsArticles(fetchedData.en_published.articles);
           break;
