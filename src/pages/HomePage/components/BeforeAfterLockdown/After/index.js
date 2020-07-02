@@ -52,9 +52,9 @@ function AfterLockdown(props) {
             ...data,
             x: [...dx],
             y: [...dy],
-            mode: 'lines',
-            line: {},
-            name: 'Deceased',
+            mode: 'bar',
+            type: 'bar',
+            name: 'After Lockdown',
           },
         ]}
         layout={{
