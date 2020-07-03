@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Plot from 'react-plotly.js';
 import {useTheme} from '@material-ui/core/styles';
 
 function AfterLockdown(props) {
   const {data} = props;
+  const theme = useTheme();
 
   const months = [
     'Jan',
@@ -27,28 +28,24 @@ function AfterLockdown(props) {
 
   const [dx] = useState([...ddates]);
   const [dy] = useState([...data.y]);
-  const [shapes, setshapes] = useState([...data.shapes]);
 
-  const theme = useTheme();
+  const parsedShapes = data.shapes.map((shape) => {
+    const date0 = new Date(shape.x0 * 1000);
+    const date1 = new Date(shape.x1 * 1000);
+    return {
+      ...shape,
+      fillcolor: theme.palette.stats.confirmed,
+      line: {
+        ...shape.line,
+        color: theme.palette.stats.confirmed,
+      },
+      x0: date0.getDate() + ' ' + months[date0.getMonth()],
+      x1: date1.getDate() + ' ' + months[date1.getMonth()],
+    };
+  });
 
-  useEffect(() => {
-    const parsedShapes = shapes.map((shape) => {
-      const date0 = new Date(shape.x0 * 1000);
-      const date1 = new Date(shape.x1 * 1000);
-      return {
-        ...shape,
-        fillcolor: theme.palette.stats.confirmed,
-        line: {
-          ...shape.line,
-          color: theme.palette.stats.confirmed,
-        },
-        x0: date0.getDate() + ' ' + months[date0.getMonth()],
-        x1: date1.getDate() + ' ' + months[date1.getMonth()],
-      };
-    });
-    setshapes(parsedShapes);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [shapes] = useState([...parsedShapes]);
+
   return (
     dx.length >= 0 && (
       <Plot
@@ -56,7 +53,6 @@ function AfterLockdown(props) {
           {
             x: [...dx],
             y: [...dy],
-            mode: 'bar',
             type: 'bar',
             name: 'After Lockdown',
             marker: {
