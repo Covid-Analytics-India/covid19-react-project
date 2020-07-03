@@ -5,11 +5,6 @@ import {useTheme} from '@material-ui/core/styles';
 function AfterLockdown(props) {
   const {data} = props;
 
-  const [dx, setdx] = useState([...data.x]);
-  const [dy] = useState([...data.y]);
-  const [shapes, setshapes] = useState([...data.shapes]);
-
-  const theme = useTheme();
   const months = [
     'Jan',
     'Feb',
@@ -25,13 +20,18 @@ function AfterLockdown(props) {
     'Dec',
   ];
 
+  const ddates = data.x.map((timestamp) => {
+    const date = new Date(timestamp * 1000);
+    return date.getDate() + ' ' + months[date.getMonth()];
+  });
+
+  const [dx] = useState([...ddates]);
+  const [dy] = useState([...data.y]);
+  const [shapes, setshapes] = useState([...data.shapes]);
+
+  const theme = useTheme();
+
   useEffect(() => {
-    const ddates = dx.map((timestamp) => {
-      const date = new Date(timestamp * 1000);
-      return date.getDate() + ' ' + months[date.getMonth()];
-    });
-    setdx(ddates);
-    console.log(ddates);
     const parsedShapes = shapes.map((shape) => {
       const date0 = new Date(shape.x0 * 1000);
       const date1 = new Date(shape.x1 * 1000);
@@ -50,11 +50,10 @@ function AfterLockdown(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    dx.length > 0 && (
+    dx.length >= 0 && (
       <Plot
         data={[
           {
-            ...data,
             x: [...dx],
             y: [...dy],
             mode: 'bar',
