@@ -1,1 +1,1 @@
-export const API_URL = 'https://devapi.covidanalytics.live';
+export const API_URL = 'http://3.231.59.89:5000';
