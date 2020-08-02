@@ -10,7 +10,7 @@ import {useStyles} from './styles';
 const NewsPage = () => {
   const [newsArticles, setNewsArticles] = useState(null);
   const [fetchedData, setfetchedData] = useState(null);
-  const [sortBy, setSortBy] = useState('popularity');
+  const [sortBy, setSortBy] = useState('published');
   const classes = useStyles();
   const [t, i18n] = useTranslation();
 
@@ -24,9 +24,9 @@ const NewsPage = () => {
       };
       try {
         const response = await Axios.get(`${API_URL}/api/get_news`, headers);
-        console.log(response);
+        console.log(response.data.en_published.articles);
         setfetchedData(response.data);
-        setNewsArticles(response.data.en_popularity.articles);
+        setNewsArticles(response.data.en_published.articles);
       } catch (e) {
         console.error(e);
         setNewsArticles(null);
