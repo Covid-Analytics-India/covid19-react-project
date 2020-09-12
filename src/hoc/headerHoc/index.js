@@ -17,10 +17,6 @@ import {withRouter} from 'react-router-dom';
 
 const headerHoc = (WrapComponent) => {
   class HocContent extends React.Component {
-    constructor(props) {
-      super(props);
-    }
-
     handleChange = (checked) => {
       this.setState({...this.state, checked: checked});
       console.log(this.state.checked);

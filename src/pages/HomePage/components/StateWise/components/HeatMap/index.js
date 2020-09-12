@@ -90,7 +90,7 @@ const ChoroplethMap = (props) => {
     }
   });
   useEffect(() => {
-    const viewportWidth = window.innerWidth > 600;
+    // const viewportWidth = window.innerWidth > 600;
     const dataset = {};
     const data = stateData.x.map((e, i) => [stateCodes[i], e]);
     // We need to colorize every country based on "numberOfWhatever"
@@ -162,7 +162,7 @@ const ChoroplethMap = (props) => {
         return {path: path, projection: projection};
       },
     });
-  }, []);
+  }, [stateCodes, stateData.x]);
   return (
     <div
       id="cloropleth_map"
