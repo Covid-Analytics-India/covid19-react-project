@@ -24,7 +24,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       justifyContent: 'center',
       alignItems: 'center',
       flexDirection: 'row',
@@ -42,30 +42,33 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'row',
   },
-  PieContent: {
-    padding: '0 100px',
-  },
+
   // Header Styles
   header: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column',
-    [theme.breakpoints.up('sm')]: {
-      marginBottom: 18,
+    flexDirection: 'row',
+    marginTop: 40,
+    marginBottom: 18,
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      flexDirection: 'column',
     },
   },
   headerImage: {
-    height: 80,
-    [theme.breakpoints.up('sm')]: {
+    height: 60,
+    marginRight: 10,
+    [theme.breakpoints.up('md')]: {
+      marginRight: 0,
       height: 180,
     },
   },
   headerText: {
-    fontSize: 20,
+    fontSize: 14,
     fontWeight: 700,
     color: theme.palette.text.primary,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       fontSize: 28,
     },
   },
@@ -73,15 +76,8 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: 10,
     fontWeight: 400,
     color: theme.palette.text.secondary,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       fontSize: 18,
     },
-  },
-
-  // Particle Styles
-  particles: {
-    height: '100vh',
-    position: 'fixed',
-    top: 0,
   },
 }));

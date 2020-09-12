@@ -1,6 +1,13 @@
 export const styles = (theme) => ({
   root: {
     width: '100%',
+    position: 'relative',
+    zIndex: 1100,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  header: {
+    width: '100%',
     background: theme.palette.primary.main,
     boxShadow: theme.palette.shadows.header,
     color: theme.palette.text.primary,

@@ -11,9 +11,12 @@ export const useStyles = makeStyles((theme) => ({
   Title: {
     fontSize: 14,
     fontWeight: 600,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       fontSize: 30,
       marginTop: 20,
     },
+  },
+  PieContent: {
+    padding: '0 40px',
   },
 }));

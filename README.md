@@ -1,13 +1,6 @@
 # [COVID-19 Analytics India](https://covidanalytics.live) &middot; ![version](https://img.shields.io/github/v/release/Cryptonex7/covid19-react-project) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-## Realtime COVID-19 Analytics!
-________________________________________________________________
-
-## Deploy
-
-- Push to branch `dev`:    [dev-covidanalyticsindia.now.sh](https://dev-covidanalyticsindia.now.sh)
-- Push to branch `test`:   [test-covidanalyticsindia.now.sh](https://test-covidanalyticsindia.now.sh)
-- Push to branch `master`: [covidanalytics.live](https://covidanalytics.live)
+Realtime COVID-19 Analytics!
 
 ## Setup
 

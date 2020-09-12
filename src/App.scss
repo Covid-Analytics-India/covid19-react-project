@@ -1,61 +1,82 @@
-// /** Inter Font */
-// @font-face {
-//   font-family: 'Inter';
-//   font-style: normal;
-//   font-weight: 300;
-//   src: url('fonts/Inter/Inter-Light-slnt=0.ttf') format('truetype');
-// }
+/** Ubuntu Font */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 300;
+  src: url('fonts/Ubuntu/Ubuntu-Light.ttf') format('truetype');
+}
 
-// @font-face {
-//   font-family: 'Inter';
-//   font-style: normal;
-//   font-weight: 400;
-//   src: url('fonts/Inter/Inter-Regular-slnt=0.ttf') format('truetype');
-// }
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 300;
+  src: url('fonts/Ubuntu/Ubuntu-LightItalic.ttf') format('truetype');
+}
 
-// @font-face {
-//   font-family: 'Inter';
-//   font-style: normal;
-//   font-weight: 500;
-//   src: url('fonts/Inter/Inter-Medium-slnt=0.ttf') format('truetype');
-// }
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+}
 
-// @font-face {
-//   font-family: 'Inter';
-//   font-style: normal;
-//   font-weight: 600;
-//   src: url('fonts/Inter/Inter-SemiBold-slnt=0.ttf') format('truetype');
-// }
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 400;
+  src: url('fonts/Ubuntu/Ubuntu-Italic.ttf') format('truetype');
+}
 
-// @font-face {
-//   font-family: 'Inter';
-//   font-style: normal;
-//   font-weight: 700;
-//   src: url('fonts/Inter/Inter-Bold-slnt=0.ttf') format('truetype');
-// }
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  src: url('fonts/Ubuntu/Ubuntu-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 500;
+  src: url('fonts/Ubuntu/Ubuntu-MediumItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 700;
+  src: url('fonts/Ubuntu/Ubuntu-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  src: url('fonts/Ubuntu/Ubuntu-Bold.ttf') format('truetype');
+}
 
 /** Bitter Font */
 
-@font-face {
-  font-family: 'Bitter';
-  font-style: normal;
-  font-weight: 400;
-  src: url('fonts/Bitter/Bitter-Regular.ttf') format('truetype');
-}
+// @font-face {
+//   font-family: 'Bitter';
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url('fonts/Bitter/Bitter-Regular.ttf') format('truetype');
+// }
 
-@font-face {
-  font-family: 'Bitter';
-  font-style: italic;
-  font-weight: 400;
-  src: url('fonts/Bitter/Bitter-Italic.ttf') format('truetype');
-}
+// @font-face {
+//   font-family: 'Bitter';
+//   font-style: italic;
+//   font-weight: 400;
+//   src: url('fonts/Bitter/Bitter-Italic.ttf') format('truetype');
+// }
 
-@font-face {
-  font-family: 'Bitter';
-  font-style: normal;
-  font-weight: 700;
-  src: url('fonts/Bitter/Bitter-Bold.ttf') format('truetype');
-}
+// @font-face {
+//   font-family: 'Bitter';
+//   font-style: normal;
+//   font-weight: 700;
+//   src: url('fonts/Bitter/Bitter-Bold.ttf') format('truetype');
+// }
 
 /** Color pallete */
 $gray: #6c757d;
@@ -94,7 +115,7 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   float: none !important;
-  font-family: Bitter;
+  font-family: Ubuntu;
   margin: 0;
   margin: 0 auto !important;
   max-height: 100vh;
